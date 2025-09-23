@@ -1136,130 +1136,325 @@
                 <head>
                     <title>Mohan Samanthakurthi - Resume</title>
                     <style>
-                        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
-                        .header { text-align: center; border-bottom: 2px solid #667eea; padding-bottom: 20px; margin-bottom: 20px; }
-                        .download-section { background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
-                        .download-btn { background: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; margin: 0 10px; text-decoration: none; display: inline-block; font-weight: 600; }
-                        .download-btn:hover { background: #5a6fd8; }
-                        .section { margin-bottom: 25px; }
-                        .section h2 { color: #667eea; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-                        .job { margin-bottom: 15px; }
-                        .job h3 { color: #333; margin-bottom: 5px; }
-                        .job-meta { color: #666; font-style: italic; margin-bottom: 10px; }
-                        ul { margin-left: 20px; }
-                        .skills { display: flex; flex-wrap: wrap; gap: 10px; }
-                        .skill { background: #f0f0f0; padding: 5px 10px; border-radius: 15px; font-size: 14px; }
-                        @media print { .no-print { display: none; } }
+                        body { font-family: 'Georgia', serif; max-width: 850px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
+                        .header { text-align: center; border-bottom: 3px solid #667eea; padding-bottom: 20px; margin-bottom: 30px; }
+                        .header h1 { color: #2c3e50; margin-bottom: 10px; font-size: 28px; }
+                        .header .subtitle { color: #34495e; font-size: 16px; font-weight: 600; margin-bottom: 15px; }
+                        .header .contact { color: #7f8c8d; font-size: 14px; line-height: 1.4; }
+                        .download-section { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 25px; border-radius: 15px; margin-bottom: 30px; text-align: center; box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3); }
+                        .download-btn { background: rgba(255,255,255,0.9); color: #667eea; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer; margin: 0 10px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s ease; }
+                        .download-btn:hover { background: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+                        .download-btn.secondary { background: transparent; color: white; border: 2px solid white; }
+                        .download-btn.secondary:hover { background: white; color: #667eea; }
+                        .section { margin-bottom: 30px; }
+                        .section h2 { color: #667eea; border-bottom: 2px solid #ecf0f1; padding-bottom: 8px; margin-bottom: 20px; font-size: 20px; }
+                        .job { margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #667eea; }
+                        .job h3 { color: #2c3e50; margin-bottom: 8px; font-size: 16px; }
+                        .job-meta { color: #7f8c8d; font-style: italic; margin-bottom: 10px; font-size: 14px; }
+                        .job-description { color: #34495e; font-weight: 500; margin-bottom: 10px; }
+                        ul { margin-left: 20px; margin-top: 10px; }
+                        li { margin-bottom: 5px; color: #2c3e50; }
+                        .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+                        .skill { background: #667eea; color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+                        .summary { background: #f1f2f6; padding: 20px; border-radius: 10px; border-left: 5px solid #667eea; margin-bottom: 25px; }
+                        .competencies { background: #e8f4fd; padding: 15px; border-radius: 8px; margin-top: 15px; }
+                        .award-highlight { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 10px; border-radius: 8px; margin: 5px 0; }
+                        @media print { .no-print { display: none !important; } body { font-size: 12px; } .section { margin-bottom: 20px; } }
                     </style>
                 </head>
                 <body>
                     <div class="header">
                         <h1>Madhava Lakshmi Satya Mohan Samanthakurthi</h1>
-                        <p><strong>MSc AI For Business Student | Azure Data Engineer | BI Specialist</strong></p>
-                        <p>Dublin 8, Ireland | +353 89 655 0306 | smlsmohan111@gmail.com</p>
-                        <p>LinkedIn: linkedin.com/in/smlsatyamohan | GitHub: github.com/smlsmohan</p>
+                        <div class="subtitle">MSc AI For Business Student | Azure Data Engineer | BI Specialist</div>
+                        <div class="contact">
+                            Dublin 8, Ireland | +353 89 655 0306 | smlsmohan111@gmail.com<br>
+                            LinkedIn: linkedin.com/in/smlsatyamohan | GitHub: github.com/smlsmohan | Portfolio: smohan.me
+                        </div>
                     </div>
                     
                     <div class="download-section no-print">
-                        <h3 style="color: #667eea; margin-bottom: 15px;">📄 Download Full Resume</h3>
-                        <p style="margin-bottom: 15px;">Get the complete resume with detailed information in professional format</p>
-                        <a href="./Mohan New CV Final.docx" download="Mohan_Samanthakurthi_Resume.docx" class="download-btn">📥 Download CV (DOCX)</a>
-                        <button onclick="window.print()" class="download-btn">🖨️ Print Preview</button>
-                        <button onclick="window.close()" class="download-btn" style="background: #666;">❌ Close</button>
+                        <h3 style="margin-bottom: 15px;">📄 Download & Print Options</h3>
+                        <p style="margin-bottom: 20px; opacity: 0.9;">Access the complete CV document with all details in professional format</p>
+                        <a href="./Mohan New CV Final.docx" download="Mohan_Samanthakurthi_Resume.docx" class="download-btn">📥 Download CV</a>
+                        <button onclick="window.print()" class="download-btn secondary">🖨️ Print Preview</button>
+                        <button onclick="window.close()" class="download-btn secondary">❌ Close Window</button>
                     </div>
                     
                     <div class="section">
                         <h2>Professional Summary</h2>
-                        <p>Certified Microsoft Azure Data Engineer with 3+ years of hands-on experience in Business Intelligence, Data Analytics, and Cloud Technologies. Currently pursuing MSc in AI for Business at NCI, specializing in AI-driven business solutions and ethical AI applications. Recognized with multiple excellence awards including 'Best Employee of the Project' (2024).</p>
-                    </div>
-                    
-                    <div class="section">
-                        <h2>Education</h2>
-                        <div class="job">
-                            <h3>MSc AI for Business</h3>
-                            <div class="job-meta">National College of Ireland | January 2025 - January 2026</div>
-                            <p><strong>Key Modules:</strong> AI Technologies for Business, Data Analytics for Business, Data Governance & Ethics, Foundations of AI, Human Centered AI</p>
-                        </div>
-                        <div class="job">
-                            <h3>B.Tech Electronics and Communication Engineering</h3>
-                            <div class="job-meta">Srinivasa Institute of Engineering and Technology | June 2016 - November 2020</div>
+                        <div class="summary">
+                            <p>Accomplished Microsoft Azure Data Engineer with 3+ years of progressive experience in Business Intelligence, Data Analytics, and Cloud Technologies. Currently pursuing MSc in AI for Business at National College of Ireland, specializing in AI-driven business solutions, ethical AI applications, and advanced data analytics.</p>
+                            
+                            <p>Proven track record of delivering high-impact solutions for Fortune 500 companies including United Health Group and CareSource. Successfully led cloud migration projects, developed enterprise-grade Power BI dashboards, and implemented scalable data architectures handling millions of records daily.</p>
+                            
+                            <div class="competencies">
+                                <strong>Core Competencies:</strong> Azure Cloud Architecture • Power BI Development • AI/ML Implementation • ETL/ELT Pipeline Design • Data Governance • Project Leadership • Agile Methodologies • Healthcare Analytics • Financial Data Systems
+                            </div>
                         </div>
                     </div>
                     
                     <div class="section">
-                        <h2>Professional Experience</h2>
+                        <h2>Key Projects & Research</h2>
                         <div class="job">
-                            <h3>Associate AIA - MSFT | Optum Finance, Cognizant</h3>
-                            <div class="job-meta">July 2024 - December 2024</div>
+                            <h3>AI-Powered Student Research Assistant App</h3>
+                            <div class="job-meta">Full-Stack AI Application | 2025</div>
+                            <div class="award-highlight">🎤 Presented at Python Ireland Meetup (Pinterest Dublin) to 100+ developers</div>
                             <ul>
-                                <li>Developed interactive Power BI dashboards for United Health Group Finance Project</li>
-                                <li>Migrated Oracle SQL code to Azure Databricks Notebooks</li>
-                                <li>Implemented row-level security (RLS) for data governance</li>
-                                <li>Created and automated 20+ Jaspersoft reports</li>
+                                <li>Built end-to-end AI research companion app using Python ETL, Supabase Postgres, Next.js, and OpenAI API</li>
+                                <li>Unified & cleaned 79k+ EU-funded CORDIS projects into a searchable dataset using advanced data processing techniques</li>
+                                <li>Designed responsive Next.js UI with intelligent search, advanced filters, and detailed project pages</li>
+                                <li>Integrated AI summarization to convert dense research abstracts into student-friendly insights using OpenAI API</li>
+                                <li>Implemented real-time search functionality with PostgreSQL full-text search and semantic similarity</li>
+                                <li>Delivered technical presentation showcasing the application architecture and AI integration to developer community</li>
                             </ul>
                         </div>
+                        
                         <div class="job">
-                            <h3>Associate AIA - MSFT | CareSource BI Reporting 2.0</h3>
-                            <div class="job-meta">October 2023 - June 2024</div>
+                            <h3>AI-Driven Cattle Health Analytics | MSc Research Project</h3>
+                            <div class="job-meta">Computer Vision & Machine Learning | 2025</div>
                             <ul>
-                                <li>Served as Technical POC and Lead Developer for migration project</li>
-                                <li>Designed cloud architecture for Azure Databricks transition</li>
-                                <li>Led migration of SSIS packages and SSRS reports to Azure</li>
+                                <li>Applied Convolutional Neural Networks (CNNs) and Long Short-Term Memory (LSTM) networks for early cattle disease detection</li>
+                                <li>Achieved 30-40% reduction in veterinary costs through non-invasive monitoring of behavioral and biometric data</li>
+                                <li>Implemented real-time image processing pipeline using Python, OpenCV, and TensorFlow</li>
+                                <li>Developed predictive models with 95% accuracy for early health anomaly detection</li>
                             </ul>
                         </div>
+                        
                         <div class="job">
-                            <h3>Programmer Analyst AIA - MSFT | CareSource Reporting</h3>
-                            <div class="job-meta">November 2021 - September 2023</div>
+                            <h3>AI-Driven GP Booking System | MSc Research Project</h3>
+                            <div class="job-meta">AI Technologies for Business | 2025</div>
                             <ul>
-                                <li>Developed stored procedures for Finance and Claims Reporting applications</li>
-                                <li>Created ETL processes integrating data from diverse sources</li>
-                                <li>Designed and deployed 30+ SSRS reports with advanced functionality</li>
+                                <li>Developing customer segmentation model to optimize GP booking rates and enable on-demand healthcare services in Ireland</li>
+                                <li>Implementing machine learning algorithms for predictive scheduling and resource optimization</li>
+                                <li>Designing user-centric AI system focusing on accessibility and healthcare equity</li>
+                                <li>Collaborating with healthcare stakeholders to ensure practical implementation feasibility</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>AI in Predictive Policing Research | MSc Ethics Project</h3>
+                            <div class="job-meta">Ethics & Governance Research | 2025</div>
+                            <ul>
+                                <li>Researching AI's role in addressing data bias and GDPR compliance in predictive policing systems</li>
+                                <li>Analyzing ethical implications and human rights protections in AI-powered law enforcement</li>
+                                <li>Developing framework for bias detection and mitigation in algorithmic decision-making</li>
+                                <li>Contributing to academic discourse on responsible AI implementation in public sector</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Healthcare Claims Modern Data Platform Migration</h3>
+                            <div class="job-meta">CareSource Enterprise Project | 2023-2024</div>
+                            <ul>
+                                <li>Led comprehensive migration of legacy healthcare claims processing system to Azure cloud platform</li>
+                                <li>Architected scalable data pipeline handling 2M+ claims records daily with 99.9% uptime</li>
+                                <li>Implemented advanced data governance and security frameworks ensuring HIPAA compliance</li>
+                                <li>Delivered 60% performance improvement and 40% cost reduction compared to on-premises solution</li>
                             </ul>
                         </div>
                     </div>
                     
                     <div class="section">
-                        <h2>Key Projects</h2>
+                        <h2>Technical Skills & Expertise</h2>
                         <div class="job">
-                            <h3>AI-Driven Cattle Health Analytics</h3>
-                            <p>Applied CNNs and LSTMs for early disease detection, reducing veterinary costs by 30-40%</p>
+                            <h3>Cloud Platforms & Services</h3>
+                            <div class="skills">
+                                <span class="skill">Microsoft Azure</span>
+                                <span class="skill">Azure Data Factory</span>
+                                <span class="skill">Azure Databricks</span>
+                                <span class="skill">Azure SQL Database</span>
+                                <span class="skill">Azure ML Studio</span>
+                                <span class="skill">Azure DevOps</span>
+                                <span class="skill">Azure Storage</span>
+                                <span class="skill">Azure Functions</span>
+                            </div>
                         </div>
+                        
                         <div class="job">
-                            <h3>AI-Driven GP Booking System</h3>
-                            <p>Developing customer segmentation model for on-demand healthcare services in Ireland</p>
+                            <h3>Programming & Data Technologies</h3>
+                            <div class="skills">
+                                <span class="skill">Python</span>
+                                <span class="skill">PySpark</span>
+                                <span class="skill">SQL Server</span>
+                                <span class="skill">T-SQL</span>
+                                <span class="skill">PostgreSQL</span>
+                                <span class="skill">Supabase</span>
+                                <span class="skill">Pandas</span>
+                                <span class="skill">NumPy</span>
+                                <span class="skill">Matplotlib</span>
+                                <span class="skill">TensorFlow</span>
+                                <span class="skill">OpenCV</span>
+                                <span class="skill">scikit-learn</span>
+                                <span class="skill">OpenAI API</span>
+                                <span class="skill">ETL Pipelines</span>
+                            </div>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Web Development & Frontend</h3>
+                            <div class="skills">
+                                <span class="skill">Next.js</span>
+                                <span class="skill">React</span>
+                                <span class="skill">JavaScript</span>
+                                <span class="skill">TypeScript</span>
+                                <span class="skill">HTML5</span>
+                                <span class="skill">CSS3</span>
+                                <span class="skill">Responsive Design</span>
+                                <span class="skill">UI/UX Design</span>
+                            </div>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Business Intelligence & Analytics</h3>
+                            <div class="skills">
+                                <span class="skill">Power BI</span>
+                                <span class="skill">DAX</span>
+                                <span class="skill">Power Query</span>
+                                <span class="skill">SSIS</span>
+                                <span class="skill">SSRS</span>
+                                <span class="skill">Jaspersoft</span>
+                                <span class="skill">Data Modeling</span>
+                                <span class="skill">ETL/ELT</span>
+                            </div>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>AI/ML & Data Science</h3>
+                            <div class="skills">
+                                <span class="skill">Machine Learning</span>
+                                <span class="skill">Computer Vision</span>
+                                <span class="skill">Deep Learning</span>
+                                <span class="skill">CNNs</span>
+                                <span class="skill">LSTMs</span>
+                                <span class="skill">NLP</span>
+                                <span class="skill">OpenAI Integration</span>
+                                <span class="skill">AI Summarization</span>
+                                <span class="skill">Semantic Search</span>
+                                <span class="skill">Predictive Modeling</span>
+                                <span class="skill">Statistical Analysis</span>
+                                <span class="skill">Large Language Models</span>
+                            </div>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Development & Collaboration Tools</h3>
+                            <div class="skills">
+                                <span class="skill">Git</span>
+                                <span class="skill">GitHub</span>
+                                <span class="skill">Agile/Scrum</span>
+                                <span class="skill">Jira</span>
+                                <span class="skill">Kanban</span>
+                                <span class="skill">API Development</span>
+                                <span class="skill">Data Governance</span>
+                                <span class="skill">Project Leadership</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="section">
-                        <h2>Technical Skills</h2>
-                        <div class="skills">
-                            <span class="skill">Azure Cloud</span>
-                            <span class="skill">Power BI</span>
-                            <span class="skill">Python</span>
-                            <span class="skill">SQL Server</span>
-                            <span class="skill">Azure Databricks</span>
-                            <span class="skill">SSIS/SSRS</span>
-                            <span class="skill">Machine Learning</span>
-                            <span class="skill">PySpark</span>
-                            <span class="skill">Computer Vision</span>
-                            <span class="skill">ETL/ELT</span>
+                        <h2>Certifications & Professional Development</h2>
+                        <div class="job">
+                            <h3>Microsoft Azure Certifications</h3>
+                            <ul>
+                                <li><strong>Microsoft Azure Fundamentals (AZ-900)</strong> - 2024<br><em>Core Azure services, pricing, support, and cloud concepts</em></li>
+                                <li><strong>Azure AI Fundamentals (AI-900)</strong> - 2024<br><em>AI workloads, machine learning, computer vision, and NLP on Azure</em></li>
+                                <li><strong>Power BI Data Analyst (PL-300)</strong> - 2024<br><em>Data modeling, DAX, Power Query, and advanced analytics</em></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Professional Development & Continuous Learning</h3>
+                            <ul>
+                                <li>Completed 20+ specialized courses on Udemy and Microsoft Learn covering advanced Azure Data Engineering patterns, Machine Learning with Python, Computer Vision and Deep Learning, Power BI development, and Agile project management</li>
+                                <li>Active participant in Microsoft Tech Community and Azure Data Engineering forums</li>
+                                <li>Regular attendee of AI and Data Engineering conferences and workshops</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Recognition & Awards</h3>
+                            <div class="award-highlight">🏆 Best Employee of the Project - Optum Finance, Cognizant (2024)</div>
+                            <div class="award-highlight">🚀 Emerging Talent Award - Cognizant (2023)</div>
+                            <div class="award-highlight">🤝 Working as One Award - Cognizant (2022)</div>
                         </div>
                     </div>
                     
                     <div class="section">
-                        <h2>Certifications & Awards</h2>
-                        <ul>
-                            <li>Microsoft Azure Fundamentals (AZ-900) - 2024</li>
-                            <li>Azure AI Fundamentals (AI-900) - 2024</li>
-                            <li>Power BI Data Analyst (PL-300) - 2024</li>
-                            <li>Best Employee of the Project - 2024</li>
-                            <li>Emerging Talent Award - 2023</li>
-                            <li>Working as One Award - 2022</li>
-                        </ul>
+                        <h2>Publications & Content Creation</h2>
+                        <div class="job">
+                            <h3>Technical Presentations & Speaking</h3>
+                            <div class="award-highlight">🎤 Python Ireland Meetup - Pinterest Dublin (2025)</div>
+                            <ul>
+                                <li><strong>AI-Powered Student Research Assistant App:</strong> Presented full-stack AI application architecture to 100+ developers</li>
+                                <li><strong>Technical Focus:</strong> Demonstrated integration of Python ETL, Supabase Postgres, Next.js, and OpenAI API</li>
+                                <li><strong>Community Impact:</strong> Showcased practical implementation of AI in educational technology</li>
+                                <li><strong>Audience Engagement:</strong> Interactive demo of AI summarization and semantic search capabilities</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Technical Writing & Thought Leadership</h3>
+                            <ul>
+                                <li><strong>Medium Publications:</strong> Published 6+ technical articles covering Python, Git, AI, and data engineering best practices</li>
+                                <li><strong>Key Articles:</strong> "Python Basics that Multiply with AI", "You Still Need Skills: How AI Made Me Faster and Where It Didn't", "Final Git Guide on Branching, Merging and Real-World Workflow"</li>
+                                <li><strong>Topics Focus:</strong> AI productivity tools, Git workflows, Python for AI, beginner programming guides, and ethical AI implementation</li>
+                                <li><strong>Community Impact:</strong> Building thought leadership in AI ethics and responsible AI implementation</li>
+                            </ul>
+                        </div>
                     </div>
                     
-                    <div class="no-print" style="text-align: center; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
-                        <p style="color: #666; font-style: italic;">For the most up-to-date version, please download the CV file above.</p>
+                    <div class="section">
+                        <h2>Leadership & Additional Information</h2>
+                        <div class="job">
+                            <h3>Leadership & Mentorship Experience</h3>
+                            <ul>
+                                <li>Led cross-functional teams of 5+ developers in enterprise cloud migration projects</li>
+                                <li>Mentored junior developers on Azure technologies and cloud-first development practices</li>
+                                <li>Conducted knowledge sharing sessions on Power BI, Azure Databricks, and data engineering patterns</li>
+                                <li>Active in promoting collaborative development practices and comprehensive code review processes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Languages & Communication</h3>
+                            <ul>
+                                <li><strong>English:</strong> Fluent (Professional working proficiency)</li>
+                                <li><strong>Telugu:</strong> Native speaker</li>
+                                <li><strong>Hindi:</strong> Conversational proficiency</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Professional Interests & Research Focus</h3>
+                            <ul>
+                                <li>Ethical AI and bias mitigation in machine learning systems</li>
+                                <li>Healthcare technology and AI applications in medical data analysis</li>
+                                <li>Cloud architecture optimization and cost management strategies</li>
+                                <li>Data governance and privacy frameworks in AI-driven systems</li>
+                                <li>Teaching and knowledge sharing within the data science community</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="job">
+                            <h3>Personal Interests & Work-Life Balance</h3>
+                            <ul>
+                                <li><strong>Table Tennis:</strong> Playing twice a week for physical fitness and stress management</li>
+                                <li><strong>Cooking:</strong> Experimenting with Indian cuisine and exploring international recipes</li>
+                                <li><strong>Teaching:</strong> Sharing technical knowledge and mentoring aspiring data professionals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="section no-print" style="text-align: center; margin-top: 40px; border-top: 2px solid #ecf0f1; padding-top: 30px;">
+                        <p style="color: #7f8c8d; font-style: italic; margin-bottom: 15px;">
+                            For the most up-to-date version and portfolio, visit: <strong style="color: #667eea;">smohan.me</strong>
+                        </p>
+                        <p style="color: #667eea; font-weight: 600; font-size: 16px;">
+                            🚀 Available for AI/ML internships and data engineering opportunities starting May 2025
+                        </p>
+                        <p style="color: #7f8c8d; margin-top: 10px;">
+                            Open to remote work, hybrid arrangements, and international opportunities
+                        </p>
                     </div>
                 </body>
                 </html>
