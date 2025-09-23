@@ -99,6 +99,14 @@
             justify-content: center;
             font-size: 4rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .hero h1 {
@@ -525,7 +533,7 @@
         <div class="page active" id="home">
             <div class="hero">
                 <div class="container">
-                    <div class="profile-img"> <img src="mohan linkedin image.jpeg" style = "max-height:100px;" /></div>
+                    <div class="profile-img"><img src="mohan linkedin image.jpeg" alt="Mohan Samanthakurthi" /></div>
                     <h1>Mohan Samanthakurthi</h1>
                     <p class="subtitle">AI for Business | Azure Data Engineer | BI Specialist</p>
                     <div class="cta-buttons">
@@ -845,94 +853,100 @@
                 <div class="content-section">
                     <h2 class="section-title">📝 Blog & Insights</h2>
                     <p style="text-align: center; margin-bottom: 2rem; color: #666;">
-                        Sharing my journey in AI, Data Engineering, and Business Intelligence
+                        Sharing my journey in AI, Data Engineering, Python, and Git through practical tutorials and insights
                     </p>
                     
                     <div class="blog-grid">
-                        <div class="blog-card">
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/python-basics-that-multiply-with-ai-a-student-friendly-kick-start-guide-cd645428df48', '_blank')" style="cursor: pointer;">
                             <div class="blog-card-content">
-                                <div class="blog-date">March 15, 2025</div>
-                                <h3>Migrating Legacy BI Systems to Azure: Lessons Learned</h3>
-                                <p>Insights from leading the CareSource BI migration project, including architecture decisions, challenges faced, and best practices for cloud migration.</p>
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>Python Basics that Multiply with AI: A Student-Friendly Kick-Start Guide</h3>
+                                <p>A comprehensive beginner's guide to Python programming tailored for students entering the AI and data science field. Covers essential Python concepts and how they connect to AI applications.</p>
                                 <div class="blog-tags">
-                                    <span class="blog-tag">Azure</span>
-                                    <span class="blog-tag">Migration</span>
-                                    <span class="blog-tag">BI</span>
+                                    <span class="blog-tag">Python</span>
+                                    <span class="blog-tag">AI</span>
+                                    <span class="blog-tag">Beginner</span>
+                                    <span class="blog-tag">Programming</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="blog-card">
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/you-still-need-skills-how-ai-made-me-faster-and-where-it-didnt-82c5c5122bd7', '_blank')" style="cursor: pointer;">
                             <div class="blog-card-content">
-                                <div class="blog-date">February 28, 2025</div>
-                                <h3>AI Ethics in Healthcare: A Data Engineer's Perspective</h3>
-                                <p>Exploring the ethical considerations when implementing AI solutions in healthcare, drawing from my cattle health analytics project and predictive policing research.</p>
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>You Still Need Skills: How AI Made Me Faster and Where It Didn't</h3>
+                                <p>A honest perspective on AI's impact on productivity and skill development, sharing real experiences of where AI tools excel and where traditional skills remain irreplaceable.</p>
                                 <div class="blog-tags">
-                                    <span class="blog-tag">AI Ethics</span>
-                                    <span class="blog-tag">Healthcare</span>
-                                    <span class="blog-tag">GDPR</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="blog-card">
-                            <div class="blog-card-content">
-                                <div class="blog-date">February 10, 2025</div>
-                                <h3>Power BI Performance Optimization: DAX Best Practices</h3>
-                                <p>Advanced DAX techniques and performance optimization strategies learned from developing dashboards for United Health Group's finance operations.</p>
-                                <div class="blog-tags">
-                                    <span class="blog-tag">Power BI</span>
-                                    <span class="blog-tag">DAX</span>
-                                    <span class="blog-tag">Performance</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="blog-card">
-                            <div class="blog-card-content">
-                                <div class="blog-date">January 25, 2025</div>
-                                <h3>Computer Vision for Agriculture: Early Disease Detection in Livestock</h3>
-                                <p>Technical deep-dive into using CNNs and LSTMs for cattle health monitoring, including model architecture, data preprocessing, and real-world deployment considerations.</p>
-                                <div class="blog-tags">
-                                    <span class="blog-tag">Computer Vision</span>
-                                    <span class="blog-tag">Agriculture</span>
-                                    <span class="blog-tag">CNN</span>
-                                    <span class="blog-tag">LSTM</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="blog-card">
-                            <div class="blog-card-content">
-                                <div class="blog-date">January 12, 2025</div>
-                                <h3>From ETL to ELT: Modern Data Pipeline Architecture</h3>
-                                <p>Comparing traditional ETL approaches with modern ELT patterns using Azure Data Factory and Databricks, based on hands-on experience with enterprise data pipelines.</p>
-                                <div class="blog-tags">
-                                    <span class="blog-tag">Data Engineering</span>
-                                    <span class="blog-tag">ETL</span>
-                                    <span class="blog-tag">Azure</span>
-                                    <span class="blog-tag">Databricks</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="blog-card">
-                            <div class="blog-card-content">
-                                <div class="blog-date">December 20, 2024</div>
-                                <h3>Building Scalable BI Solutions: A Journey from On-Premises to Cloud</h3>
-                                <p>My professional journey from traditional SQL Server environments to modern cloud-based analytics platforms, including key learnings and technology evolution.</p>
-                                <div class="blog-tags">
+                                    <span class="blog-tag">AI Tools</span>
+                                    <span class="blog-tag">Productivity</span>
+                                    <span class="blog-tag">Skills</span>
                                     <span class="blog-tag">Career</span>
-                                    <span class="blog-tag">Cloud</span>
-                                    <span class="blog-tag">BI</span>
-                                    <span class="blog-tag">SQL Server</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/from-beginner-to-confident-final-git-guide-on-branching-merging-and-real-world-workflow-b57a66acfa68', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>From Beginner to Confident: Final Git Guide on Branching, Merging and Real-World Workflow</h3>
+                                <p>Master advanced Git concepts including branching strategies, merging techniques, and professional workflows used in real development teams.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Git</span>
+                                    <span class="blog-tag">Version Control</span>
+                                    <span class="blog-tag">Workflow</span>
+                                    <span class="blog-tag">Development</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/your-first-git-project-3-key-steps-to-set-up-commit-and-push-to-github-be675acdc761', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>Your First Git Project: 3 Key Steps to Set Up, Commit and Push to GitHub</h3>
+                                <p>Step-by-step tutorial for beginners to create their first Git project, make commits, and push code to GitHub. Perfect for those starting their coding journey.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Git</span>
+                                    <span class="blog-tag">GitHub</span>
+                                    <span class="blog-tag">Beginner</span>
+                                    <span class="blog-tag">Tutorial</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/3-easy-steps-to-start-with-github-81ed62f2b037', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>3 Easy Steps to Start with GitHub</h3>
+                                <p>A beginner-friendly introduction to GitHub, covering account setup, repository creation, and basic operations to get you started with the world's largest code hosting platform.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">GitHub</span>
+                                    <span class="blog-tag">Beginner</span>
+                                    <span class="blog-tag">Setup</span>
+                                    <span class="blog-tag">Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/what-is-git-and-3-major-reasons-to-why-to-learn-git-github-8903a8f4eefd', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>What is Git and 3 Major Reasons to Why to Learn Git & GitHub</h3>
+                                <p>Understanding the fundamentals of Git version control system and compelling reasons why every developer should master Git and GitHub for their career growth.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Git</span>
+                                    <span class="blog-tag">GitHub</span>
+                                    <span class="blog-tag">Version Control</span>
+                                    <span class="blog-tag">Fundamentals</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div style="text-align: center; margin-top: 2rem;">
-                        <p style="color: #666; font-style: italic;">More blog posts coming soon! Follow me on LinkedIn for updates.</p>
+                        <p style="color: #666; font-style: italic; margin-bottom: 1rem;">
+                            Read more articles on <a href="https://medium.com/@smlsmohan111" target="_blank" style="color: #667eea; text-decoration: none;">Medium @smlsmohan111</a>
+                        </p>
+                        <p style="color: #666; font-style: italic;">Follow me on LinkedIn and Medium for more updates!</p>
                     </div>
                 </div>
             </div>
