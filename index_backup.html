@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohan Samanthakurthi - Azure Data Engineer & BI Specialist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #667eea;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+
+        .page {
+            display: none;
+            min-height: 90vh;
+            padding: 2rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Content Cards */
+        .content-section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .project-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Awards */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .award-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .award-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .cert-badge {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .cert-badge:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: background 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #667eea;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 3px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        /* Blog Styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .blog-tag {
+            background: #e9ecef;
+            color: #495057;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">MS</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="projects">Projects</a></li>
+                <li><a href="#" class="nav-link" data-page="experience">Experience</a></li>
+                <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Home Page -->
+        <div class="page active" id="home">
+            <div class="hero">
+                <div class="container">
+                    <div class="profile-img"><img src="mohan linkedin image.jpeg" alt="Mohan Samanthakurthi" /></div>
+                    <h1>Mohan Samanthakurthi</h1>
+                    <p class="subtitle">Azure Data Engineer | Power BI Data Analyst | AI for Business</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-primary" onclick="downloadResume()">📄 View Resume</a>
+                        <a href="https://student-research-assistant-app.vercel.app/" class="btn btn-primary" target="_blank">🚀 Latest Project</a>
+                        <a href="https://linkedin.com/in/smlsatyamohan" class="btn btn-secondary" target="_blank">💼 LinkedIn</a>
+                        <a href="https://github.com/smlsmohan" class="btn btn-secondary" target="_blank">💻 GitHub</a>
+                    </div>
+                    <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; opacity: 0.9;">
+                        Certified Azure Data Engineer and Power BI Data Analyst (PL-300) with 3+ years of enterprise experience at Cognizant, delivering end-to-end data engineering and BI solutions across finance and healthcare domains. Recently completed MSc in AI for Business, applying analytics and AI-driven healthcare systems solutions. (Stamp 1G Visa)
+                    </p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="content-section fade-in">
+                    <h2 class="section-title">🏆 Awards & Recognition</h2>
+                    <div class="awards-grid">
+                        <div class="award-card">
+                            <div class="award-icon">⭐</div>
+                            <h3>Best Employee of the Project</h3>
+                            <p>CareSource MDP Migration - 2024</p>
+                        </div>
+                        <div class="award-card">
+                            <div class="award-icon">🚀</div>
+                            <h3>Emerging Talent Award</h3>
+                            <p>Cognizant - 2023</p>
+                        </div>
+                        <div class="award-card">
+                            <div class="award-icon">🤝</div>
+                            <h3>Working as One Award</h3>
+                            <p>Cognizant - 2022</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section fade-in">
+                    <h2 class="section-title">🛠️ Skills & Technologies</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>☁️ Cloud Skills</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Azure Data Factory</span>
+                                <span class="skill-tag">Azure Databricks</span>
+                                <span class="skill-tag">Microsoft Fabric</span>
+                                <span class="skill-tag">Lakehouse</span>
+                                <span class="skill-tag">OneLake</span>
+                                <span class="skill-tag">Azure SQL</span>
+                                <span class="skill-tag">Power BI Service</span>
+                                <span class="skill-tag">Storage Explorer</span>
+                                <span class="skill-tag">Medallion Architecture</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>📊 Business Intelligence | Data Engineering</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">T-SQL</span>
+                                <span class="skill-tag">MS SQL Server</span>
+                                <span class="skill-tag">SSMS</span>
+                                <span class="skill-tag">SSIS</span>
+                                <span class="skill-tag">SSRS</span>
+                                <span class="skill-tag">Power BI (DAX, Power Query)</span>
+                                <span class="skill-tag">Tidal Automation</span>
+                                <span class="skill-tag">Jaspersoft</span>
+                                <span class="skill-tag">RapidMiner</span>
+                                <span class="skill-tag">ADF Pipelines</span>
+                                <span class="skill-tag">Databricks Workflows</span>
+                                <span class="skill-tag">ETL/ELT Pipelines</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>💻 Programming | ML</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">PySpark</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">NumPy</span>
+                                <span class="skill-tag">Pandas</span>
+                                <span class="skill-tag">Matplotlib</span>
+                                <span class="skill-tag">Scikit-learn</span>
+                                <span class="skill-tag">TensorFlow</span>
+                                <span class="skill-tag">NLP</span>
+                                <span class="skill-tag">ANN/DNN</span>
+                                <span class="skill-tag">Reinforcement Learning</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>⚙️ Business Tools | DevOps</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Jupyter Notebook</span>
+                                <span class="skill-tag">Google Colab</span>
+                                <span class="skill-tag">VS Code</span>
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">CI/CD Pipelines</span>
+                                <span class="skill-tag">Jira</span>
+                                <span class="skill-tag">Confluence</span>
+                                <span class="skill-tag">Agile (Scrum, Kanban)</span>
+                                <span class="skill-tag">Data Governance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div class="page" id="about">
+            <div class="container">
+                <div class="content-section">
+                    <h2 class="section-title">About Me</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; align-items: center;">
+                        <div style="text-align: center;">
+                            <div class="profile-img" style="margin: 0 auto 1rem;">👨‍💻</div>
+                            <h3>Madhava Lakshmi Satya Mohan Samanthakurthi</h3>
+                            <p style="color: #666;">Dublin, Ireland</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 1.1rem; line-height: 1.8;">
+                                Certified Azure Data Engineer and Power BI Data Analyst (PL-300) with 3+ years of enterprise experience at Cognizant, delivering end-to-end data engineering and BI solutions across finance and healthcare domains.
+                            </p>
+                            <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                                Strong expertise in on-prem SQL Server, SSIS, SSRS, and large-scale migrations to Azure cloud services, Databricks, PySpark, Azure Data Factory, Microsoft Fabric, Lakehouse, scalable data pipelines, and analytics-ready data models. Proven Technical POC and Lead Developer, driving modern data platform validation, data quality checks, KPI reporting, and stakeholder-ready dashboards.
+                            </p>
+                            <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                                Recently completed an MSc in Artificial Intelligence for Business, applying analytics and AI-driven healthcare systems solutions. Currently on Stamp 1G Visa in Ireland.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">🎓 Certifications</h2>
+                    <div class="cert-grid">
+                        <div class="cert-badge">
+                            <h4>Azure Fundamentals</h4>
+                            <p>AZ-900 | Dec 2024</p>
+                        </div>
+                        <div class="cert-badge">
+                            <h4>Azure AI Fundamentals</h4>
+                            <p>AI-900 | Dec 2024</p>
+                        </div>
+                        <div class="cert-badge">
+                            <h4>Power BI Data Analyst</h4>
+                            <p>PL-300 | Dec 2024</p>
+                        </div>
+                        <div class="cert-badge">
+                            <h4>Fabric Data Engineer</h4>
+                            <p>DP-700 | Scheduled Feb 2026</p>
+                        </div>
+                        <div class="cert-badge">
+                            <h4>Oracle Cloud AI Foundations</h4>
+                            <p>1Z0-1122-25 | Sep 2025</p>
+                        </div>
+                        <div class="cert-badge">
+                            <h4>Supervised ML: Regression & Classification</h4>
+                            <p>DeepLearning.AI | Dec 2025</p>
+                        </div>
+                        <div class="cert-badge">
+                            <h4>Advanced Learning Algorithms</h4>
+                            <p>DeepLearning.AI | Jan 2026</p>
+                        </div>
+                        <div class="cert-badge">
+                            <h4>Unsupervised Learning & RL</h4>
+                            <p>DeepLearning.AI | Jan 2026</p>
+                        </div>
+                        <div class="cert-badge">
+                            <h4>Python Programming</h4>
+                            <p>University of Michigan | Aug 2025</p>
+                        </div>
+                        <div class="cert-badge">
+                            <h4>20+ Professional Courses</h4>
+                            <p>Udemy · DataCamp · Coursera · Microsoft Learn</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">🎯 Interests & Hobbies</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🏓</div>
+                            <h3>Table Tennis</h3>
+                            <p>Playing twice a week for relaxation and maintaining work-life balance</p>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🧑‍🏫</div>
+                            <h3>Teaching & Mentorship</h3>
+                            <p>Sharing knowledge and teaching technical skills to colleagues and friends</p>
+                        </div>
+                        <div style="text-align: center; padding: 1.5rem;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🍛</div>
+                            <h3>Cooking</h3>
+                            <p>Experimenting with Indian cuisine and exploring new recipes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Page -->
+        <div class="page" id="projects">
+            <div class="container">
+                <div class="content-section">
+                    <h2 class="section-title">🚀 Featured Projects</h2>
+                    
+                    <h3 style="color: #667eea; margin: 2rem 0 1rem 0;">🎓 Academic Projects (MSc AI for Business)</h3>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h3>🔬 Hybrid Ant Colony Optimization for Last Mile Delivery</h3>
+                            <div class="project-meta">MSc Research Project | 2025-2026</div>
+                            <p>Completed MSc research on Hybrid Ant Colony Optimization using ANN, KNN, and LSTM with Python and ML frameworks for last-mile delivery optimization.</p>
+                            <div class="skill-tags" style="margin-top: 1rem;">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">ANN</span>
+                                <span class="skill-tag">KNN</span>
+                                <span class="skill-tag">LSTM</span>
+                                <span class="skill-tag">Optimization</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <h3>🚀 Student Research Assistant Web App</h3>
+                            <div class="project-meta">Python Ireland Tech Talk | <a href="https://student-research-assistant-app.vercel.app/" target="_blank" style="color: #667eea;">Live Demo</a></div>
+                            <p>Built a real-time Student Research Assistant web application using Python, backend APIs, and Vercel web deployment. Presented the solution at Python Ireland Tech Talk.</p>
+                            <div class="skill-tags" style="margin-top: 1rem;">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Backend APIs</span>
+                                <span class="skill-tag">Vercel</span>
+                                <span class="skill-tag">Tech Talk</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <h3>🏥 AI-Powered GP Appointment System</h3>
+                            <div class="project-meta">Healthcare AI Project | 2025</div>
+                            <p>Proposed an AI-powered GP appointment system for Ireland using Python, Flask REST APIs, SQL, ML models (XGBoost, Random Forest), and NLP chatbot (RASA) for no-show prediction and scheduling.</p>
+                            <div class="skill-tags" style="margin-top: 1rem;">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Flask</span>
+                                <span class="skill-tag">XGBoost</span>
+                                <span class="skill-tag">Random Forest</span>
+                                <span class="skill-tag">RASA NLP</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <h3>🤖 Leap Card Student Application Automation</h3>
+                            <div class="project-meta">RPA Project | 2025</div>
+                            <p>Automated the Leap Card student application process using UiPath (RPA) with rule-based validation, CSV audit reports, and email notifications.</p>
+                            <div class="skill-tags" style="margin-top: 1rem;">
+                                <span class="skill-tag">UiPath</span>
+                                <span class="skill-tag">RPA</span>
+                                <span class="skill-tag">Automation</span>
+                                <span class="skill-tag">Process Optimization</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <h3>📋 TULU AI Rental Platform</h3>
+                            <div class="project-meta">Risk & Change Management | 2025</div>
+                            <p>Delivered comprehensive Risk and Change Management plan for the TULU AI rental platform.</p>
+                            <div class="skill-tags" style="margin-top: 1rem;">
+                                <span class="skill-tag">Risk Management</span>
+                                <span class="skill-tag">Change Management</span>
+                                <span class="skill-tag">AI Platform</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 style="color: #667eea; margin: 2rem 0 1rem 0;">💼 Industry Projects</h3>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h3>Optum Finance - United Health Group</h3>
+                            <div class="project-meta">Cognizant | Jul 2024 - Dec 2024</div>
+                            <p>Engineered Azure Databricks workflows and Power BI dashboards using PySpark, Azure SQL, and DAX, enabling finance stakeholders to monitor KPIs in real time and reduce manual Excel-based reporting by nearly 30%.</p>
+                            <div class="skill-tags" style="margin-top: 1rem;">
+                                <span class="skill-tag">Azure Databricks</span>
+                                <span class="skill-tag">Power BI</span>
+                                <span class="skill-tag">PySpark</span>
+                                <span class="skill-tag">DAX</span>
+                                <span class="skill-tag">Azure SQL</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <h3>CareSource BI Reporting 2.0 - Cloud Migration</h3>
+                            <div class="project-meta">Cognizant | Oct 2023 - Jun 2024</div>
+                            <p>Led POC and served as Technical POC for migration from on-prem SSIS and SSRS to Azure Databricks SQL within Modern Data Platform (MDP), validating cloud feasibility and accelerating enterprise cloud adoption.</p>
+                            <div class="skill-tags" style="margin-top: 1rem;">
+                                <span class="skill-tag">Azure Migration</span>
+                                <span class="skill-tag">Databricks SQL</span>
+                                <span class="skill-tag">SSIS</span>
+                                <span class="skill-tag">SSRS</span>
+                                <span class="skill-tag">Technical POC</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <h3>CareSource - Healthcare Claims Reporting</h3>
+                            <div class="project-meta">Cognizant | Nov 2021 - Sep 2023</div>
+                            <p>Developed and optimized complex T-SQL stored procedures and SSIS ETL pipelines processing high-volume finance and claims datasets, improving query performance by 20% through indexing and tuning strategies.</p>
+                            <div class="skill-tags" style="margin-top: 1rem;">
+                                <span class="skill-tag">T-SQL</span>
+                                <span class="skill-tag">SSIS</span>
+                                <span class="skill-tag">SSRS</span>
+                                <span class="skill-tag">ETL</span>
+                                <span class="skill-tag">Healthcare</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Page -->
+        <div class="page" id="experience">
+            <div class="container">
+                <div class="content-section">
+                    <h2 class="section-title">💼 Professional Experience</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3 style="color: #667eea;">Associate Engineer | Optum Finance (United Health Group)</h3>
+                            <div class="project-meta">Cognizant, Hyderabad, India | Jul 2024 - Dec 2024</div>
+                            <ul style="margin-top: 1rem;">
+                                <li>Engineered Azure Databricks workflows and Power BI dashboards using PySpark, Azure SQL, and DAX, enabling finance stakeholders to monitor KPIs in real time and reduce manual Excel-based reporting by nearly 30%</li>
+                                <li>Developed interactive Power BI dashboards using DAX measures, Power Query transformations, and Row-Level Security (RLS)</li>
+                                <li>Designed and optimized large-scale PySpark transformation pipelines across Medallion architecture layers</li>
+                                <li>Migrated 50+ SQL scripts to Azure Databricks Notebooks, improving execution performance by 25%</li>
+                                <li>Automated 20+ Jaspersoft and SSRS reports with scheduled executions, ensuring 100% on-time financial reporting</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 style="color: #667eea;">Associate Engineer | CareSource - BI Reporting 2.0</h3>
+                            <div class="project-meta">Cognizant, Hyderabad, India | Oct 2023 - Jun 2024</div>
+                            <ul style="margin-top: 1rem;">
+                                <li>Led POC and served as Technical POC for migration from on-prem SSIS and SSRS to Azure Databricks SQL within Modern Data Platform (MDP)</li>
+                                <li>Designed cloud-native data architecture within 1 month of Azure onboarding, replicating legacy SSIS packages and SSRS reports</li>
+                                <li>Migrated legacy ETL and reporting workloads to Azure Databricks and Power BI, reducing report generation time</li>
+                                <li>Re-engineered SSIS ETL workflows into Databricks SQL and PySpark based ELT pipelines</li>
+                                <li>Designed Power BI dashboards and SSRS reports providing visibility into claims and finance operations across multiple U.S. states</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 style="color: #667eea;">Programmer Analyst | CareSource - Reporting</h3>
+                            <div class="project-meta">Cognizant, Hyderabad, India | Nov 2021 - Sep 2023</div>
+                            <ul style="margin-top: 1rem;">
+                                <li>Developed and optimized complex T-SQL stored procedures and SSIS ETL pipelines, improving query performance by 20%</li>
+                                <li>Designed and deployed 30+ parameterized SSRS reports (drill-down, matrix, dynamic formatting)</li>
+                                <li>Built robust ETL solutions integrating heterogeneous data sources (SQL Server, flat files, Excel, ODBC/OLE DB)</li>
+                                <li>Automated bulk data operations using advanced SSIS control flows and transformations</li>
+                                <li>Managed deployments using Git and CI/CD pipelines across Indiana, Ohio, West Virginia, and Georgia business domains</li>
+                                <li>Designed indexed views, triggers, user-defined functions, and constraints in SQL Server</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">🎓 Education</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3 style="color: #667eea;">MSc in AI for Business</h3>
+                            <div class="project-meta">National College of Ireland, Dublin | Jan 2025 - Jan 2026</div>
+                            <p><strong>Key Projects:</strong></p>
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Hybrid Ant Colony Optimization for Last Mile Delivery (Research)</li>
+                                <li>Student Research Assistant Web App (Python Ireland Tech Talk)</li>
+                                <li>AI-Powered GP Appointment System</li>
+                                <li>Leap Card Application Automation (UiPath RPA)</li>
+                                <li>TULU AI Risk & Change Management Plan</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 style="color: #667eea;">B.Tech Electronics and Communication Engineering</h3>
+                            <div class="project-meta">SRIN College, India | Jun 2016 - Nov 2020</div>
+                            <p>Foundation in engineering principles, electronics, and communication systems that provided the technical foundation for my data engineering career.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Page -->
+        <div class="page" id="blog">
+            <div class="container">
+                <div class="content-section">
+                    <h2 class="section-title">📝 Blog & Insights</h2>
+                    <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+                        Sharing my journey in AI, Data Engineering, Python, and Git through practical tutorials and insights
+                    </p>
+                    
+                    <div class="blog-grid">
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/python-basics-that-multiply-with-ai-a-student-friendly-kick-start-guide-cd645428df48', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>Python Basics that Multiply with AI: A Student-Friendly Kick-Start Guide</h3>
+                                <p>A comprehensive beginner's guide to Python programming tailored for students entering the AI and data science field. Covers essential Python concepts and how they connect to AI applications.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Python</span>
+                                    <span class="blog-tag">AI</span>
+                                    <span class="blog-tag">Beginner</span>
+                                    <span class="blog-tag">Programming</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/you-still-need-skills-how-ai-made-me-faster-and-where-it-didnt-82c5c5122bd7', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>You Still Need Skills: How AI Made Me Faster and Where It Didn't</h3>
+                                <p>A honest perspective on AI's impact on productivity and skill development, sharing real experiences of where AI tools excel and where traditional skills remain irreplaceable.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">AI Tools</span>
+                                    <span class="blog-tag">Productivity</span>
+                                    <span class="blog-tag">Skills</span>
+                                    <span class="blog-tag">Career</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/from-beginner-to-confident-final-git-guide-on-branching-merging-and-real-world-workflow-b57a66acfa68', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>From Beginner to Confident: Final Git Guide on Branching, Merging and Real-World Workflow</h3>
+                                <p>Master advanced Git concepts including branching strategies, merging techniques, and professional workflows used in real development teams.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Git</span>
+                                    <span class="blog-tag">Version Control</span>
+                                    <span class="blog-tag">Workflow</span>
+                                    <span class="blog-tag">Development</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/your-first-git-project-3-key-steps-to-set-up-commit-and-push-to-github-be675acdc761', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>Your First Git Project: 3 Key Steps to Set Up, Commit and Push to GitHub</h3>
+                                <p>Step-by-step tutorial for beginners to create their first Git project, make commits, and push code to GitHub. Perfect for those starting their coding journey.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Git</span>
+                                    <span class="blog-tag">GitHub</span>
+                                    <span class="blog-tag">Beginner</span>
+                                    <span class="blog-tag">Tutorial</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/3-easy-steps-to-start-with-github-81ed62f2b037', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>3 Easy Steps to Start with GitHub</h3>
+                                <p>A beginner-friendly introduction to GitHub, covering account setup, repository creation, and basic operations to get you started with the world's largest code hosting platform.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">GitHub</span>
+                                    <span class="blog-tag">Beginner</span>
+                                    <span class="blog-tag">Setup</span>
+                                    <span class="blog-tag">Guide</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-card" onclick="window.open('https://medium.com/@smlsmohan111/what-is-git-and-3-major-reasons-to-why-to-learn-git-github-8903a8f4eefd', '_blank')" style="cursor: pointer;">
+                            <div class="blog-card-content">
+                                <div class="blog-date">Published on Medium</div>
+                                <h3>What is Git and 3 Major Reasons to Why to Learn Git & GitHub</h3>
+                                <p>Understanding the fundamentals of Git version control system and compelling reasons why every developer should master Git and GitHub for their career growth.</p>
+                                <div class="blog-tags">
+                                    <span class="blog-tag">Git</span>
+                                    <span class="blog-tag">GitHub</span>
+                                    <span class="blog-tag">Version Control</span>
+                                    <span class="blog-tag">Fundamentals</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <p style="color: #666; font-style: italic; margin-bottom: 1rem;">
+                            Read more articles on <a href="https://medium.com/@smlsmohan111" target="_blank" style="color: #667eea; text-decoration: none;">Medium @smlsmohan111</a>
+                        </p>
+                        <p style="color: #666; font-style: italic;">Follow me on LinkedIn and Medium for more updates!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div class="page" id="contact">
+            <div class="container">
+                <div class="content-section">
+                    <h2 class="section-title">📬 Get In Touch</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                        <div>
+                            <h3 style="margin-bottom: 1rem;">Let's Connect!</h3>
+                            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                                I'm always excited to discuss data engineering, Azure cloud solutions, Power BI analytics, and AI-driven business solutions. 
+                                Whether you're looking for collaboration opportunities, have questions about my projects, 
+                                or want to explore potential opportunities, I'd love to hear from you!
+                            </p>
+                            
+                            <div style="margin-bottom: 2rem;">
+                                <h4 style="color: #667eea; margin-bottom: 1rem;">🎯 Open to Opportunities:</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 0.5rem;">🔹 Azure Data Engineer Roles</li>
+                                    <li style="margin-bottom: 0.5rem;">🔹 Power BI / BI Developer Positions</li>
+                                    <li style="margin-bottom: 0.5rem;">🔹 Data Engineering Projects</li>
+                                    <li style="margin-bottom: 0.5rem;">🔹 AI/ML Implementation Projects</li>
+                                    <li style="margin-bottom: 0.5rem;">🔹 Speaking Opportunities</li>
+                                </ul>
+                                <p style="margin-top: 1rem; color: #667eea; font-weight: 500;">📋 Stamp 1G Visa - Eligible to work in Ireland</p>
+                            </div>
+                            
+                            <div>
+                                <h4 style="color: #667eea; margin-bottom: 1rem;">📍 Contact Information:</h4>
+                                <p><strong>Location:</strong> Dublin, Ireland</p>
+                                <p><strong>Phone:</strong> +353 89 655 0306</p>
+                                <p><strong>Email:</strong> smlsmohan111@gmail.com</p>
+                                
+                                <div class="social-links" style="justify-content: flex-start; margin-top: 1.5rem;">
+                                    <a href="https://linkedin.com/in/smlsatyamohan" target="_blank" title="LinkedIn">💼</a>
+                                    <a href="https://github.com/smlsmohan" target="_blank" title="GitHub">💻</a>
+                                    <a href="mailto:smlsmohan111@gmail.com" title="Email">📧</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h3 style="margin-bottom: 1.5rem;">Send a Message</h3>
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <select id="subject" class="form-control">
+                                        <option>Internship Opportunity</option>
+                                        <option>Project Collaboration</option>
+                                        <option>Speaking Engagement</option>
+                                        <option>General Inquiry</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" class="form-control" placeholder="Tell me about your project, opportunity, or question..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message 🚀</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-section">
+                    <h3 style="text-align: center; margin-bottom: 1.5rem;">🌟 Why Work With Me?</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏆</div>
+                            <h4>Proven Track Record</h4>
+                            <p>Multiple awards and successful enterprise projects with major healthcare and finance organizations</p>
+                        </div>
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚀</div>
+                            <h4>Innovation Focus</h4>
+                            <p>Combining traditional data engineering expertise with cutting-edge AI technologies for business impact</p>
+                        </div>
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
+                            <h4>Collaborative Approach</h4>
+                            <p>Strong team player with experience in Agile environments and cross-functional collaboration</p>
+                        </div>
+                        <div style="text-align: center; padding: 1rem;">
+                            <div style="font-size: 2.5rem; margin-bottom: 1rem;">📚</div>
+                            <h4>Continuous Learning</h4>
+                            <p>Constantly updating skills through formal education, certifications, and hands-on projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://linkedin.com/in/smlsatyamohan" target="_blank">💼</a>
+                <a href="https://github.com/smlsmohan" target="_blank">💻</a>
+                <a href="mailto:smlsmohan111@gmail.com">📧</a>
+            </div>
+            <p>&copy; 2025 Mohan Samanthakurthi. All rights reserved.</p>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Built with passion for AI, Data, and Innovation ❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinksContainer = document.getElementById('navLinks');
+
+        // Page navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = link.getAttribute('data-page');
+                
+                // Remove active class from all nav links and pages
+                navLinks.forEach(nl => nl.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Add active class to clicked link and corresponding page
+                link.classList.add('active');
+                document.getElementById(targetPage).classList.add('active');
+                
+                // Close mobile menu if open
+                navLinksContainer.classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Mobile menu toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                navLinksContainer.classList.remove('active');
+            }
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link
+            const mailtoLink = `mailto:smlsmohan111@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Hi Mohan,\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nBest regards,\n${name}`)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for your message! Your email client should open now. If not, please email me directly at smlsmohan111@gmail.com');
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+        });
+
+        // Resume download function
+        function downloadResume() {
+            // Open the PDF resume directly
+            window.open('Mohan MSBI Resume.pdf', '_blank');
+        }
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all content sections
+        document.querySelectorAll('.content-section, .timeline-item, .project-card, .blog-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
