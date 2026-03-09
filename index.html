@@ -81,21 +81,29 @@
         .stat-label { font-size: 13px; color: var(--gray-500); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
 
         .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
-        .profile-container { position: relative; width: 380px; height: 460px; }
-        .tech-stack-visual { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 320px; height: 320px; border-radius: 50%; background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,120,212,0.1)); border: 2px solid var(--cyan); box-shadow: 0 0 60px var(--cyan-glow), 0 15px 50px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .tech-icons-container { position: relative; width: 100%; height: 100%; animation: slowRotate 30s linear infinite; }
-        .tech-icon-item { position: absolute; width: 60px; height: 60px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; box-shadow: 0 8px 25px rgba(0,0,0,0.3); transition: var(--transition); }
-        .tech-icon-item:hover { transform: scale(1.2); }
-        .tech-icon-item.azure { background: linear-gradient(135deg, #0078d4, #00bcf2); top: 10%; left: 50%; transform: translateX(-50%); }
-        .tech-icon-item.powerbi { background: linear-gradient(135deg, #f2c811, #dea917); top: 30%; right: 5%; }
-        .tech-icon-item.python { background: linear-gradient(135deg, #3776ab, #ffd43b); bottom: 30%; right: 5%; }
-        .tech-icon-item.sql { background: linear-gradient(135deg, #cc2927, #ff6b6b); bottom: 10%; left: 50%; transform: translateX(-50%); }
-        .tech-icon-item.databricks { background: linear-gradient(135deg, #ff3621, #ff6b4a); bottom: 30%; left: 5%; }
-        .tech-icon-item.fabric { background: linear-gradient(135deg, #0078d4, #50e6ff); top: 30%; left: 5%; }
-        .center-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; }
-        .center-text h3 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; color: var(--cyan); margin-bottom: 5px; }
-        .center-text p { font-size: 12px; color: var(--gray-400); }
-        @keyframes slowRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .profile-container { position: relative; width: 420px; height: 480px; }
+        .tech-stack-visual { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 340px; height: 340px; border-radius: 20px; background: linear-gradient(145deg, rgba(0,212,255,0.08), rgba(0,60,120,0.15)); border: 1px solid rgba(0,212,255,0.3); box-shadow: 0 25px 80px rgba(0,212,255,0.15), inset 0 0 60px rgba(0,212,255,0.05); display: flex; align-items: center; justify-content: center; overflow: visible; }
+        .tech-hex-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 30px; }
+        .tech-hex-item { width: 80px; height: 80px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 28px; color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: var(--transition); cursor: default; }
+        .tech-hex-item:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 20px 40px rgba(0,212,255,0.3); }
+        .tech-hex-item span { font-size: 9px; margin-top: 6px; font-weight: 600; letter-spacing: 0.5px; opacity: 0.9; }
+        .tech-hex-item.azure { background: linear-gradient(135deg, #0078d4, #00bcf2); }
+        .tech-hex-item.powerbi { background: linear-gradient(135deg, #f2c811, #dea917); color: #1a1a2e; }
+        .tech-hex-item.python { background: linear-gradient(135deg, #3776ab, #ffd43b); }
+        .tech-hex-item.sql { background: linear-gradient(135deg, #cc2927, #ff6b6b); }
+        .tech-hex-item.databricks { background: linear-gradient(135deg, #ff3621, #ff6b4a); }
+        .tech-hex-item.fabric { background: linear-gradient(135deg, #0078d4, #50e6ff); }
+        .tech-hex-item.spark { background: linear-gradient(135deg, #e25a1c, #f7931e); }
+        .tech-hex-item.etl { background: linear-gradient(135deg, #10b981, #059669); }
+        .tech-hex-item.git { background: linear-gradient(135deg, #f05032, #ff6b4a); }
+        .floating-badge { position: absolute; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.3); border-radius: 12px; padding: 12px 18px; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .floating-badge-1 { top: 20px; right: -20px; }
+        .floating-badge-2 { bottom: 60px; left: -30px; }
+        .floating-badge-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+        .floating-badge-icon.cert { background: var(--cyan); color: var(--bg-primary); }
+        .floating-badge-icon.award { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: white; }
+        .floating-badge h4 { font-size: 13px; font-weight: 600; color: var(--white); }
+        .floating-badge p { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
         .profile-ring { position: absolute; border: 1px solid rgba(0,212,255,0.2); border-radius: 50%; }
 
         section { padding: 100px 0; position: relative; z-index: 1; }
@@ -148,6 +156,9 @@
         .timeline-content { background: var(--bg-tertiary); border: 1px solid var(--gray-800); border-radius: 18px; padding: 35px; transition: var(--transition); }
         .timeline-content:hover { border-color: var(--cyan); box-shadow: 0 12px 40px rgba(0,212,255,0.1); }
         .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
+        .timeline-company { display: flex; align-items: center; gap: 15px; }
+        .company-logo { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: white; padding: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); overflow: hidden; }
+        .company-logo img { width: 100%; height: 100%; object-fit: contain; }
         .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--cyan); padding: 6px 14px; background: rgba(0,212,255,0.1); border-radius: 6px; }
         .timeline-content h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; color: var(--white); }
         .timeline-content h4 { font-size: 15px; color: var(--cyan); font-weight: 500; margin-bottom: 18px; }
@@ -215,28 +226,34 @@
         .award-year { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--cyan); margin-bottom: 18px; }
         .award-card p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
 
-        #education { background: var(--bg-secondary); }
+        #education { background: linear-gradient(180deg, #0a1628 0%, #0d1b2a 100%); }
         .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 35px; max-width: 950px; margin: 0 auto; }
-        .edu-card { background: var(--bg-tertiary); border: 1px solid var(--gray-800); border-radius: 18px; padding: 40px; transition: var(--transition); }
+        .edu-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 40px; transition: var(--transition); backdrop-filter: blur(10px); }
         .edu-card:hover { border-color: var(--cyan); box-shadow: 0 18px 45px rgba(0,212,255,0.1); }
-        .edu-icon { width: 60px; height: 60px; background: var(--cyan); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--bg-primary); margin-bottom: 25px; }
+        .edu-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--cyan), var(--cyan-dark)); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--bg-primary); margin-bottom: 25px; }
         .edu-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--white); }
         .edu-card h4 { font-size: 15px; color: var(--cyan); font-weight: 500; margin-bottom: 18px; }
-        .edu-card p { font-size: 14px; color: var(--gray-500); line-height: 1.7; }
-        .edu-date { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gray-400); margin-top: 22px; display: inline-block; padding: 6px 14px; background: var(--bg-secondary); border-radius: 6px; }
+        .edu-card p { font-size: 14px; color: #94a3b8; line-height: 1.7; }
+        .edu-date { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #64748b; margin-top: 22px; display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; }
 
-        #contact { background: var(--bg-primary); }
+        #contact { background: linear-gradient(180deg, #0d1b2a 0%, #1b2838 50%, #0d1b2a 100%); }
         .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: start; }
         .contact-info h3 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 20px; font-weight: 700; }
         .contact-info h3 span { color: var(--cyan); }
-        .contact-info > p { color: var(--gray-500); margin-bottom: 35px; font-size: 15px; line-height: 1.8; }
+        .contact-info > p { color: #94a3b8; margin-bottom: 35px; font-size: 15px; line-height: 1.8; }
         .contact-links { display: flex; flex-direction: column; gap: 18px; }
-        .contact-form-wrapper { background: var(--bg-secondary); border: 1px solid var(--gray-800); border-radius: 22px; padding: 45px; }
+        .contact-link { display: flex; align-items: center; gap: 15px; padding: 18px 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; text-decoration: none; transition: var(--transition); }
+        .contact-link:hover { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.3); transform: translateX(8px); }
+        .contact-link-icon { width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(0,212,255,0.05)); border: 1px solid rgba(0,212,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--cyan); flex-shrink: 0; }
+        .contact-link-content h4 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+        .contact-link-content p { font-size: 13px; color: #94a3b8; margin: 0; }
+        .contact-form-wrapper { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; padding: 45px; backdrop-filter: blur(10px); }
         .contact-form-wrapper h3 { font-size: 22px; font-weight: 700; margin-bottom: 30px; color: var(--white); }
         .form-group { margin-bottom: 22px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; color: var(--gray-400); }
-        .form-group input, .form-group textarea { width: 100%; padding: 14px 18px; background: var(--bg-tertiary); border: 1px solid var(--gray-800); border-radius: 10px; font-size: 14px; color: var(--white); font-family: inherit; transition: var(--transition); }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,212,255,0.1); }
+        .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; color: #94a3b8; }
+        .form-group input, .form-group textarea { width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; font-size: 14px; color: var(--white); font-family: inherit; transition: var(--transition); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--cyan); background: rgba(0,212,255,0.05); box-shadow: 0 0 0 3px rgba(0,212,255,0.1); }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: #64748b; }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
         .submit-btn { width: 100%; padding: 16px; background: var(--cyan); border: none; border-radius: 10px; color: var(--bg-primary); font-size: 15px; font-weight: 700; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; }
@@ -357,18 +374,25 @@
             <div class="hero-visual">
                 <div class="profile-container">
                     <div class="tech-stack-visual">
-                        <div class="tech-icons-container">
-                            <div class="tech-icon-item azure"><i class="fab fa-microsoft"></i></div>
-                            <div class="tech-icon-item powerbi"><i class="fas fa-chart-pie"></i></div>
-                            <div class="tech-icon-item python"><i class="fab fa-python"></i></div>
-                            <div class="tech-icon-item sql"><i class="fas fa-database"></i></div>
-                            <div class="tech-icon-item databricks"><i class="fas fa-cubes"></i></div>
-                            <div class="tech-icon-item fabric"><i class="fas fa-cloud"></i></div>
+                        <div class="tech-hex-grid">
+                            <div class="tech-hex-item azure"><i class="fab fa-microsoft"></i><span>Azure</span></div>
+                            <div class="tech-hex-item powerbi"><i class="fas fa-chart-pie"></i><span>Power BI</span></div>
+                            <div class="tech-hex-item python"><i class="fab fa-python"></i><span>Python</span></div>
+                            <div class="tech-hex-item sql"><i class="fas fa-database"></i><span>SQL</span></div>
+                            <div class="tech-hex-item databricks"><i class="fas fa-cubes"></i><span>Databricks</span></div>
+                            <div class="tech-hex-item fabric"><i class="fas fa-cloud"></i><span>Fabric</span></div>
+                            <div class="tech-hex-item spark"><i class="fas fa-bolt"></i><span>Spark</span></div>
+                            <div class="tech-hex-item etl"><i class="fas fa-exchange-alt"></i><span>ETL</span></div>
+                            <div class="tech-hex-item git"><i class="fab fa-git-alt"></i><span>Git</span></div>
                         </div>
-                        <div class="center-text">
-                            <h3>Tech Stack</h3>
-                            <p>Azure, Power BI, Python, SQL, Databricks, Fabric</p>
-                        </div>
+                    </div>
+                    <div class="floating-badge floating-badge-1">
+                        <div class="floating-badge-icon cert"><i class="fas fa-certificate"></i></div>
+                        <div><h4>7 Certifications</h4><p>Microsoft, Oracle, Coursera</p></div>
+                    </div>
+                    <div class="floating-badge floating-badge-2">
+                        <div class="floating-badge-icon award"><i class="fas fa-trophy"></i></div>
+                        <div><h4>3 Awards</h4><p>Best Employee 2024</p></div>
                     </div>
                 </div>
             </div>
@@ -387,7 +411,7 @@
                 <div class="about-content fade-in">
                     <h3>Data Engineer at <span>Cognizant</span></h3>
                     <p>Certified Azure Data Engineer (DP-700) and Power BI Data Analyst (PL-300) with 3+ years of enterprise experience delivering data solutions for Fortune 500 healthcare clients including Optum Finance and CareSource.</p>
-                    <p>Currently pursuing MSc in AI for Business at University of Limerick (2:1 Honours), combining deep technical expertise with business acumen. My work has been recognized with the Best Employee Award 2024 for exceptional contributions to project delivery.</p>
+                    <p>Currently completing MSc in AI for Business at National College of Ireland, Dublin, with research focus on Hybrid Ant Colony Optimization for last-mile delivery using ML frameworks. My work has been recognized with the Best Employee Award 2024 for exceptional contributions to project delivery.</p>
                     <div class="about-highlights">
                         <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-cloud"></i></div><div class="highlight-content"><h4>Cloud Architecture</h4><p>Azure Data Factory, Databricks, Fabric</p></div></div>
                         <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-chart-bar"></i></div><div class="highlight-content"><h4>Business Intelligence</h4><p>Power BI, SSRS, DAX, Power Query</p></div></div>
@@ -428,28 +452,43 @@
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-header"><div><h3>Optum Finance</h3><h4>Programmer Analyst @ Cognizant</h4></div><span class="timeline-date">Jul 2024 - Dec 2024</span></div>
-                        <p>Leading Microsoft Fabric and Power BI development for healthcare financial data processing.</p>
-                        <ul><li>Built Delta Lakehouse on Microsoft Fabric with Medallion Architecture (Bronze, Silver, Gold)</li><li>Developed Power BI dashboards across Life, Annuity, and Institutional products</li><li>Implemented incremental data loads reducing processing time by 45%</li><li>Created automated data quality checks and monitoring pipelines</li></ul>
-                        <div class="timeline-tech"><span>Microsoft Fabric</span><span>PySpark</span><span>Power BI</span><span>OneLake</span><span>Delta Lake</span></div>
+                        <div class="timeline-header"><div class="timeline-company"><div class="company-logo"><img src="Cognizant-Logo.jpg" alt="Cognizant"></div><div><h3>Optum Finance (United Health Group)</h3><h4>Associate Engineer @ Cognizant, Hyderabad, India</h4></div></div><span class="timeline-date">Jul 2024 - Dec 2024</span></div>
+                        <ul>
+                            <li>Engineered Azure Databricks workflows and Power BI dashboards using PySpark, Azure SQL, and DAX, enabling finance stakeholders to monitor KPIs in real time and reduce manual Excel-based reporting by nearly 30%.</li>
+                            <li>Designed and optimized large-scale PySpark transformation pipelines (joins, aggregations, standardization) across Medallion architecture layers, improving data processing efficiency and ensuring analytics-ready datasets.</li>
+                            <li>Migrated 50+ SQL scripts to Azure Databricks Notebooks, automating batch data loads via workflows and configuration tables, improving execution performance by 25% and reducing operational dependency.</li>
+                            <li>Automated 20+ Jaspersoft and SSRS reports with scheduled executions, ensuring 100% on time financial reporting and improving reporting reliability under strict client SLAs.</li>
+                            <li>Delivered sprint commitments in Agile and Kanban environments, consistently meeting deadlines for one of the largest U.S. managed care finance programs.</li>
+                        </ul>
+                        <div class="timeline-tech"><span>Azure Databricks</span><span>PySpark</span><span>Power BI</span><span>Azure SQL</span><span>DAX</span><span>Jaspersoft</span><span>SSRS</span></div>
                     </div>
                 </div>
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-header"><div><h3>CareSource BI Reporting 2.0</h3><h4>Programmer Analyst @ Cognizant</h4></div><span class="timeline-date">Oct 2023 - Jun 2024</span></div>
-                        <p>🏆 Won Best Employee Award for exceptional project contributions.</p>
-                        <ul><li>Led end-to-end migration of 50+ SQL objects from Test to Production</li><li>Re-engineered SSIS packages boosting ETL efficiency by 30%</li><li>Resolved critical production deployment failures and optimized SQL jobs</li><li>Built enterprise Power BI dashboards with row-level security for HIPAA compliance</li></ul>
-                        <div class="timeline-tech"><span>Azure Data Factory</span><span>SSIS</span><span>T-SQL</span><span>Power BI</span><span>SSRS</span></div>
+                        <div class="timeline-header"><div class="timeline-company"><div class="company-logo"><img src="Cognizant-Logo.jpg" alt="Cognizant"></div><div><h3>CareSource – BI Reporting 2.0</h3><h4>Associate Engineer @ Cognizant, Hyderabad, India</h4></div></div><span class="timeline-date">Oct 2023 - Jun 2024</span></div>
+                        <ul>
+                            <li>Led Proof of Concept for CareSource, migrating from on-prem SSIS/SSRS to Azure Databricks SQL, validating cloud feasibility and achieving 30% faster report generation and achieved 99.9% availability.</li>
+                            <li>Designed cloud-native data architecture within 1 month of Azure onboarding, replicating legacy SSIS packages and SSRS reports into Databricks and Power BI, improving scalability and system performance.</li>
+                            <li>Migrated legacy ETL and reporting workloads to Azure Databricks and Power BI, reducing report generation time and enhancing cross domain data accessibility.</li>
+                            <li>Re-engineered SSIS ETL workflows into Databricks SQL and PySpark based ELT pipelines, orchestrated using Databricks workflows.</li>
+                        </ul>
+                        <div class="timeline-tech"><span>Azure Databricks</span><span>SSIS</span><span>SSRS</span><span>Power BI</span><span>PySpark</span><span>Databricks SQL</span></div>
                     </div>
                 </div>
                 <div class="timeline-item fade-in">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-header"><div><h3>CareSource MDP Reporting</h3><h4>Programmer Analyst Trainee @ Cognizant</h4></div><span class="timeline-date">Nov 2021 - Sep 2023</span></div>
-                        <p>⭐ Won Emerging Talent Award 2023 and Working as One Award 2022.</p>
-                        <ul><li>Authored 30+ Jaspersoft reports for claims and appeals data analysis</li><li>Developed ETL pipelines processing millions of healthcare records</li><li>Created complex T-SQL stored procedures and optimized query performance</li><li>Trained 5+ junior analysts on SQL best practices and reporting tools</li></ul>
-                        <div class="timeline-tech"><span>SQL Server</span><span>Jaspersoft</span><span>SSIS</span><span>T-SQL</span><span>ETL</span></div>
+                        <div class="timeline-header"><div class="timeline-company"><div class="company-logo"><img src="Cognizant-Logo.jpg" alt="Cognizant"></div><div><h3>CareSource – Reporting</h3><h4>Programmer Analyst @ Cognizant, Hyderabad, India</h4></div></div><span class="timeline-date">Nov 2021 - Sep 2023</span></div>
+                        <ul>
+                            <li>Developed and optimized complex T-SQL stored procedures and SSIS ETL pipelines processing high-volume finance and claims datasets, improving query performance by 20% through indexing and tuning strategies.</li>
+                            <li>Designed and deployed 30+ parameterized SSRS reports (drill-down, matrix, dynamic formatting), enhancing business visibility across multi-state healthcare operations.</li>
+                            <li>Built robust ETL solutions integrating heterogeneous data sources (SQL Server, flat files, Excel, ODBC/OLE DB), ensuring data consistency and integrity across reporting systems.</li>
+                            <li>Automated bulk data operations using advanced SSIS control flows and transformations (For Loop, For Each, Execute SQL, Bulk Insert) to automate complex finance and claims data workflows.</li>
+                            <li>Managed deployments using Git and CI/CD pipelines, ensuring stable releases and seamless operations across Indiana, Ohio, West Virginia, and Georgia business domains.</li>
+                            <li>Designed indexed views, triggers, user-defined functions, and constraints in SQL Server to enforce data integrity and improve transactional performance.</li>
+                        </ul>
+                        <div class="timeline-tech"><span>T-SQL</span><span>SSIS</span><span>SSRS</span><span>SQL Server</span><span>Git</span><span>CI/CD</span><span>ETL</span></div>
                     </div>
                 </div>
             </div>
@@ -568,8 +607,8 @@
                 <p class="section-description">Building a strong foundation in technology and business.</p>
             </div>
             <div class="education-grid">
-                <div class="edu-card fade-in"><div class="edu-icon"><i class="fas fa-brain"></i></div><h3>MSc in AI for Business</h3><h4>University of Limerick, Ireland</h4><p>Specialized in machine learning, deep learning, NLP, and business applications of AI. Dissertation on Hybrid Ant Colony Optimization. Achieved 2:1 Honours.</p><span class="edu-date">2024 - 2025</span></div>
-                <div class="edu-card fade-in"><div class="edu-icon"><i class="fas fa-microchip"></i></div><h3>B.Tech in ECE</h3><h4>JNTUH Kakinada, India</h4><p>Strong foundation in electronics, computer architecture, and programming fundamentals. Graduated with First Class distinction.</p><span class="edu-date">2017 - 2021</span></div>
+                <div class="edu-card fade-in"><div class="edu-icon"><i class="fas fa-brain"></i></div><h3>MSc in AI for Business</h3><h4>National College of Ireland, Dublin</h4><p>Automated Leap Card student application process using UiPath (RPA) with rule-based validation, CSV audit reports, and email notifications. Completed MSc research on Hybrid Ant Colony Optimization for Last Mile Delivery using ANN, KNN, and LSTM with Python and ML frameworks.</p><span class="edu-date">Jan 2025 - Jan 2026</span></div>
+                <div class="edu-card fade-in"><div class="edu-icon"><i class="fas fa-microchip"></i></div><h3>B.Tech in Electronics & Communication Engineering</h3><h4>SRIN College, India</h4><p>Strong foundation in electronics, computer architecture, embedded systems, digital signal processing, and programming fundamentals.</p><span class="edu-date">Jun 2016 - Nov 2020</span></div>
             </div>
         </div>
     </section>
