@@ -1,689 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohan Samanthakurthi | Azure Data Engineer & Power BI Analyst</title>
-    <meta name="description" content="Certified Azure Data Engineer & Power BI Analyst with 3+ years of enterprise experience. Microsoft Certified: AZ-900, AI-900, PL-300, DP-700.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root {
-            --bg-primary: #000000;
-            --bg-secondary: #0a0a0a;
-            --bg-tertiary: #141414;
-            --cyan: #00d4ff;
-            --cyan-dark: #00a8cc;
-            --cyan-glow: rgba(0, 212, 255, 0.5);
-            --white: #ffffff;
-            --gray-400: #a3a3a3;
-            --gray-500: #737373;
-            --gray-700: #404040;
-            --gray-800: #262626;
-            --card-border: rgba(0, 212, 255, 0.15);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-primary); color: var(--white); line-height: 1.7; overflow-x: hidden; }
-        ::selection { background: var(--cyan); color: var(--bg-primary); }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
-        ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 4px; }
-
-        .loader-wrapper { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-primary); display: flex; align-items: center; justify-content: center; z-index: 10000; transition: opacity 0.5s, visibility 0.5s; }
-        .loader-wrapper.hidden { opacity: 0; visibility: hidden; }
-        .loader-spinner { width: 50px; height: 50px; border: 3px solid var(--gray-800); border-top-color: var(--cyan); border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .bg-effects { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-        .bg-grid { position: absolute; width: 100%; height: 100%; background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px); background-size: 80px 80px; }
-        .bg-glow { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.12; }
-        .bg-glow-1 { width: 500px; height: 500px; background: var(--cyan); top: -200px; left: -150px; }
-        .bg-glow-2 { width: 400px; height: 400px; background: var(--cyan); bottom: -150px; right: -100px; }
-
-        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 18px 0; transition: var(--transition); }
-        nav.scrolled { background: rgba(0,0,0,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--card-border); padding: 12px 0; }
-        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; color: var(--white); }
-        .logo span { color: var(--cyan); }
-        .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a { color: var(--gray-400); text-decoration: none; font-size: 14px; font-weight: 500; transition: var(--transition); position: relative; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--cyan); transition: width 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--white); }
-        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-        .nav-cta .btn { padding: 10px 22px; background: transparent; border: 2px solid var(--cyan); color: var(--cyan); font-weight: 600; font-size: 14px; text-decoration: none; border-radius: 8px; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; }
-        .nav-cta .btn:hover { background: var(--cyan); color: var(--bg-primary); box-shadow: 0 0 25px var(--cyan-glow); }
-        .mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
-        .mobile-toggle span { width: 26px; height: 2px; background: var(--white); }
-
-        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 130px 0 90px; }
-        .hero-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 70px; align-items: center; }
-        .hero-content { z-index: 1; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; background: rgba(0,212,255,0.1); border: 1px solid var(--card-border); border-radius: 50px; font-size: 13px; color: var(--cyan); margin-bottom: 25px; }
-        .hero-badge .pulse { width: 8px; height: 8px; background: #00ff88; border-radius: 50%; animation: pulse 2s infinite; box-shadow: 0 0 8px #00ff88; }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
-        .hero-title { font-family: 'Space Grotesk', sans-serif; font-size: 64px; font-weight: 700; line-height: 1.05; margin-bottom: 15px; letter-spacing: -2px; }
-        .hero-title .highlight { color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); }
-        .hero-subtitle { font-size: 22px; color: #d4d4d4; margin-bottom: 20px; }
-        .hero-subtitle span { color: var(--cyan); font-weight: 600; }
-        .hero-description { font-size: 16px; color: var(--gray-500); margin-bottom: 35px; max-width: 520px; line-height: 1.8; }
-        .hero-buttons { display: flex; gap: 18px; margin-bottom: 50px; }
-        .btn-primary { padding: 16px 32px; background: var(--cyan); color: var(--bg-primary); font-weight: 700; font-size: 15px; text-decoration: none; border-radius: 10px; transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 0 25px var(--cyan-glow); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 40px var(--cyan-glow); }
-        .btn-outline { padding: 16px 32px; background: transparent; color: var(--white); font-weight: 600; font-size: 15px; text-decoration: none; border-radius: 10px; border: 2px solid var(--gray-700); transition: var(--transition); display: inline-flex; align-items: center; gap: 10px; }
-        .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
-        .hero-stats { display: flex; gap: 50px; }
-        .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 46px; font-weight: 700; color: var(--white); line-height: 1; }
-        .stat-number span { color: var(--cyan); }
-        .stat-label { font-size: 13px; color: var(--gray-500); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
-
-        .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
-        .profile-container { position: relative; width: 420px; height: 480px; }
-        .tech-stack-visual { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 340px; height: 340px; border-radius: 20px; background: linear-gradient(145deg, rgba(0,212,255,0.08), rgba(0,60,120,0.15)); border: 1px solid rgba(0,212,255,0.3); box-shadow: 0 25px 80px rgba(0,212,255,0.15), inset 0 0 60px rgba(0,212,255,0.05); display: flex; align-items: center; justify-content: center; overflow: visible; }
-        .tech-hex-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 30px; }
-        .tech-hex-item { width: 80px; height: 80px; border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 28px; color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: var(--transition); cursor: default; }
-        .tech-hex-item:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 20px 40px rgba(0,212,255,0.3); }
-        .tech-hex-item span { font-size: 9px; margin-top: 6px; font-weight: 600; letter-spacing: 0.5px; opacity: 0.9; }
-        .tech-hex-item.azure { background: linear-gradient(135deg, #0078d4, #00bcf2); }
-        .tech-hex-item.powerbi { background: linear-gradient(135deg, #f2c811, #dea917); color: #1a1a2e; }
-        .tech-hex-item.python { background: linear-gradient(135deg, #3776ab, #ffd43b); }
-        .tech-hex-item.sql { background: linear-gradient(135deg, #cc2927, #ff6b6b); }
-        .tech-hex-item.databricks { background: linear-gradient(135deg, #ff3621, #ff6b4a); }
-        .tech-hex-item.fabric { background: linear-gradient(135deg, #0078d4, #50e6ff); }
-        .tech-hex-item.spark { background: linear-gradient(135deg, #e25a1c, #f7931e); }
-        .tech-hex-item.etl { background: linear-gradient(135deg, #10b981, #059669); }
-        .tech-hex-item.git { background: linear-gradient(135deg, #f05032, #ff6b4a); }
-        .floating-badge { position: absolute; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.3); border-radius: 12px; padding: 12px 18px; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-        .floating-badge-1 { top: 20px; right: -20px; }
-        .floating-badge-2 { bottom: 60px; left: -30px; }
-        .floating-badge-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .floating-badge-icon.cert { background: var(--cyan); color: var(--bg-primary); }
-        .floating-badge-icon.award { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: white; }
-        .floating-badge h4 { font-size: 13px; font-weight: 600; color: var(--white); }
-        .floating-badge p { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
-        .profile-ring { position: absolute; border: 1px solid rgba(0,212,255,0.2); border-radius: 50%; }
-
-        section { padding: 100px 0; position: relative; z-index: 1; }
-        .section-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .section-header { text-align: center; margin-bottom: 70px; }
-        .section-label { display: inline-flex; align-items: center; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--cyan); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; }
-        .section-label::before, .section-label::after { content: ''; width: 40px; height: 1px; background: var(--cyan); }
-        .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 46px; font-weight: 700; margin-bottom: 15px; letter-spacing: -1px; }
-        .section-title span { color: var(--cyan); }
-        .section-description { font-size: 17px; color: var(--gray-500); max-width: 550px; margin: 0 auto; }
-
-        #about { background: var(--bg-secondary); }
-        .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 70px; align-items: center; }
-        .about-image { border-radius: 18px; overflow: hidden; border: 2px solid var(--card-border); box-shadow: 0 15px 50px rgba(0,0,0,0.4); }
-        .about-image img { width: 100%; height: auto; display: block; }
-        .about-content h3 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 20px; font-weight: 700; }
-        .about-content h3 span { color: var(--cyan); }
-        .about-content p { color: var(--gray-400); margin-bottom: 18px; font-size: 15px; line-height: 1.85; }
-        .about-highlights { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 35px; }
-        .highlight-item { display: flex; align-items: flex-start; gap: 15px; }
-        .highlight-icon { width: 50px; height: 50px; border-radius: 12px; background: rgba(0,212,255,0.1); border: 1px solid var(--card-border); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--cyan); flex-shrink: 0; }
-        .highlight-content h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; color: var(--white); }
-        .highlight-content p { font-size: 13px; color: var(--gray-500); margin: 0; }
-
-        #skills { background: var(--bg-primary); }
-        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-        .skill-card { background: var(--bg-secondary); border: 1px solid var(--gray-800); border-radius: 18px; padding: 35px 28px; transition: var(--transition); position: relative; overflow: hidden; }
-        .skill-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--cyan); transform: scaleX(0); transition: transform 0.4s; }
-        .skill-card:hover::before { transform: scaleX(1); }
-        .skill-card:hover { transform: translateY(-8px); border-color: var(--cyan); box-shadow: 0 20px 50px rgba(0,212,255,0.12); }
-        .skill-icon { width: 60px; height: 60px; border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 22px; color: white; }
-        .skill-icon.azure { background: linear-gradient(135deg, #0078d4, #00bcf2); }
-        .skill-icon.bi { background: linear-gradient(135deg, #f2c811, #dea917); color: #1a1a2e; }
-        .skill-icon.data { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        .skill-icon.python { background: linear-gradient(135deg, #3b82f6, #8b5cf6); }
-        .skill-icon.ml { background: linear-gradient(135deg, #10b981, #059669); }
-        .skill-icon.devops { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
-        .skill-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--white); }
-        .skill-card p { font-size: 13px; color: var(--gray-500); margin-bottom: 20px; line-height: 1.6; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .skill-tag { padding: 6px 12px; background: var(--bg-tertiary); border: 1px solid var(--gray-800); border-radius: 6px; font-size: 11px; color: var(--gray-400); font-family: 'JetBrains Mono', monospace; transition: var(--transition); }
-        .skill-card:hover .skill-tag { border-color: var(--card-border); color: var(--cyan); }
-
-        #experience { background: var(--bg-secondary); }
-        .timeline { position: relative; max-width: 850px; margin: 0 auto; }
-        .timeline::before { content: ''; position: absolute; left: 0; width: 3px; height: 100%; background: linear-gradient(180deg, var(--cyan), var(--gray-800)); border-radius: 3px; }
-        .timeline-item { position: relative; padding-left: 50px; padding-bottom: 50px; }
-        .timeline-item:last-child { padding-bottom: 0; }
-        .timeline-dot { position: absolute; left: -8px; top: 5px; width: 18px; height: 18px; background: var(--cyan); border-radius: 50%; border: 4px solid var(--bg-secondary); box-shadow: 0 0 20px var(--cyan-glow); }
-        .timeline-content { background: var(--bg-tertiary); border: 1px solid var(--gray-800); border-radius: 18px; padding: 35px; transition: var(--transition); }
-        .timeline-content:hover { border-color: var(--cyan); box-shadow: 0 12px 40px rgba(0,212,255,0.1); }
-        .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
-        .timeline-company { display: flex; align-items: center; gap: 15px; }
-        .company-logo { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: white; padding: 6px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); overflow: hidden; }
-        .company-logo img { width: 100%; height: 100%; object-fit: contain; }
-        .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--cyan); padding: 6px 14px; background: rgba(0,212,255,0.1); border-radius: 6px; }
-        .timeline-content h3 { font-size: 22px; font-weight: 700; margin-bottom: 6px; color: var(--white); }
-        .timeline-content h4 { font-size: 15px; color: var(--cyan); font-weight: 500; margin-bottom: 18px; }
-        .timeline-content > p { font-size: 14px; color: var(--gray-400); margin-bottom: 18px; line-height: 1.7; }
-        .timeline-content ul { list-style: none; padding: 0; }
-        .timeline-content li { font-size: 13px; color: var(--gray-400); margin-bottom: 10px; padding-left: 24px; position: relative; line-height: 1.6; }
-        .timeline-content li::before { content: '▸'; position: absolute; left: 0; color: var(--cyan); }
-        .timeline-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--gray-800); }
-        .timeline-tech span { padding: 5px 12px; background: var(--bg-secondary); border: 1px solid var(--gray-800); border-radius: 5px; font-size: 11px; color: var(--gray-400); font-family: 'JetBrains Mono', monospace; }
-
-        #projects { background: var(--bg-primary); }
-        .projects-filter { display: flex; justify-content: center; gap: 12px; margin-bottom: 50px; flex-wrap: wrap; }
-        .filter-btn { padding: 10px 24px; background: transparent; border: 1px solid var(--gray-800); border-radius: 8px; color: var(--gray-400); font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--transition); }
-        .filter-btn:hover, .filter-btn.active { background: var(--cyan); border-color: var(--cyan); color: var(--bg-primary); }
-        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-        .project-card { background: var(--bg-secondary); border: 1px solid var(--gray-800); border-radius: 18px; overflow: hidden; transition: var(--transition); }
-        .project-card:hover { transform: translateY(-10px); border-color: var(--cyan); box-shadow: 0 20px 50px rgba(0,212,255,0.12); }
-        .project-image { height: 180px; background: linear-gradient(135deg, var(--cyan), #0066aa); display: flex; align-items: center; justify-content: center; font-size: 55px; color: white; }
-        .project-content { padding: 28px; }
-        .project-category { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--cyan); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
-        .project-content h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var (--white); }
-        .project-content p { font-size: 13px; color: var(--gray-500); margin-bottom: 18px; line-height: 1.6; }
-        .project-tech { display: flex; flex-wrap: wrap; gap: 6px; }
-        .project-tech span { padding: 4px 10px; background: var(--bg-tertiary); border-radius: 5px; font-size: 10px; color: var(--gray-400); font-family: 'JetBrains Mono', monospace; }
-
-        #certifications { background: var(--bg-secondary); }
-        .certs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-        .cert-card { background: var(--bg-tertiary); border: 1px solid var(--gray-800); border-radius: 18px; padding: 30px 22px; text-align: center; transition: var(--transition); }
-        .cert-card:hover { transform: translateY(-8px); border-color: var(--cyan); box-shadow: 0 18px 45px rgba(0,212,255,0.12); }
-        .cert-badge { width: 70px; height: 70px; margin: 0 auto 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; }
-        .cert-badge.azure { background: linear-gradient(135deg, #0078d4, #00bcf2); color: white; }
-        .cert-badge.ai { background: linear-gradient(135deg, #8b5cf6, #ec4899); color: white; }
-        .cert-badge.powerbi { background: linear-gradient(135deg, #f2c811, #dea917); color: #1a1a2e; }
-        .cert-badge.fabric { background: linear-gradient(135deg, #0078d4, #00bcf2); color: white; }
-        .cert-badge.oracle { background: linear-gradient(135deg, #ff0000, #c74634); color: white; }
-        .cert-badge.deeplearning { background: linear-gradient(135deg, #0056d2, #00b4d8); color: white; }
-        .cert-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--white); }
-        .cert-card p { font-size: 12px; color: var(--gray-500); }
-        .cert-code { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); margin-top: 12px; display: block; }
-
-        #blog { background: var(--bg-primary); }
-        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-        .blog-card { background: var(--bg-secondary); border: 1px solid var(--gray-800); border-radius: 18px; overflow: hidden; transition: var(--transition); text-decoration: none; display: block; }
-        .blog-card:hover { transform: translateY(-10px); border-color: var(--cyan); box-shadow: 0 20px 50px rgba(0,212,255,0.12); }
-        .blog-image { height: 160px; background: linear-gradient(135deg, var(--cyan), #0066aa); display: flex; align-items: center; justify-content: center; font-size: 45px; color: white; }
-        .blog-content { padding: 25px; }
-        .blog-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--cyan); margin-bottom: 10px; }
-        .blog-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: var(--white); line-height: 1.4; }
-        .blog-content p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
-        .blog-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 15px; }
-        .blog-tag { padding: 4px 10px; background: var(--bg-tertiary); border-radius: 5px; font-size: 10px; color: var(--gray-400); font-family: 'JetBrains Mono', monospace; }
-        @media (max-width: 992px) {
-            .blog-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .blog-grid { grid-template-columns: 1fr; }
-        }
-
-        #awards { background: var(--bg-secondary); }
-        .awards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-        .award-card { background: var(--bg-secondary); border: 1px solid var(--gray-800); border-radius: 18px; padding: 40px 30px; text-align: center; transition: var(--transition); }
-        .award-card:hover { transform: translateY(-10px); border-color: var(--cyan); box-shadow: 0 22px 55px rgba(0,212,255,0.12); }
-        .award-icon { width: 80px; height: 80px; margin: 0 auto 25px; background: linear-gradient(135deg, #fbbf24, #f59e0b); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; box-shadow: 0 8px 25px rgba(251,191,36,0.3); }
-        .award-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--white); }
-        .award-year { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--cyan); margin-bottom: 18px; }
-        .award-card p { font-size: 13px; color: var(--gray-500); line-height: 1.6; }
-
-        #education { background: linear-gradient(180deg, #0a1628 0%, #0d1b2a 100%); }
-        .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 35px; max-width: 950px; margin: 0 auto; }
-        .edu-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 40px; transition: var(--transition); backdrop-filter: blur(10px); }
-        .edu-card:hover { border-color: var(--cyan); box-shadow: 0 18px 45px rgba(0,212,255,0.1); }
-        .edu-icon { width: 60px; height: 60px; background: linear-gradient(135deg, var(--cyan), var(--cyan-dark)); border-radius: 15px; display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--bg-primary); margin-bottom: 25px; }
-        .edu-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--white); }
-        .edu-card h4 { font-size: 15px; color: var(--cyan); font-weight: 500; margin-bottom: 18px; }
-        .edu-card p { font-size: 14px; color: #94a3b8; line-height: 1.7; }
-        .edu-date { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #64748b; margin-top: 22px; display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; }
-
-        #contact { background: linear-gradient(180deg, #0d1b2a 0%, #1b2838 50%, #0d1b2a 100%); }
-        .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: start; }
-        .contact-info h3 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 20px; font-weight: 700; }
-        .contact-info h3 span { color: var(--cyan); }
-        .contact-info > p { color: #94a3b8; margin-bottom: 35px; font-size: 15px; line-height: 1.8; }
-        .contact-links { display: flex; flex-direction: column; gap: 18px; }
-        .contact-link { display: flex; align-items: center; gap: 15px; padding: 18px 22px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; text-decoration: none; transition: var(--transition); }
-        .contact-link:hover { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.3); transform: translateX(8px); }
-        .contact-link-icon { width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(0,212,255,0.05)); border: 1px solid rgba(0,212,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--cyan); flex-shrink: 0; }
-        .contact-link-content h4 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
-        .contact-link-content p { font-size: 13px; color: #94a3b8; margin: 0; }
-        .contact-form-wrapper { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; padding: 45px; backdrop-filter: blur(10px); }
-        .contact-form-wrapper h3 { font-size: 22px; font-weight: 700; margin-bottom: 30px; color: var(--white); }
-        .form-group { margin-bottom: 22px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 8px; color: #94a3b8; }
-        .form-group input, .form-group textarea { width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; font-size: 14px; color: var(--white); font-family: inherit; transition: var(--transition); }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--cyan); background: rgba(0,212,255,0.05); box-shadow: 0 0 0 3px rgba(0,212,255,0.1); }
-        .form-group input::placeholder, .form-group textarea::placeholder { color: #64748b; }
-        .form-group textarea { resize: vertical; min-height: 120px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-        .submit-btn { width: 100%; padding: 16px; background: var(--cyan); border: none; border-radius: 10px; color: var(--bg-primary); font-size: 15px; font-weight: 700; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 35px var(--cyan-glow); }
-
-        footer { background: var(--bg-secondary); padding: 50px 0 28px; border-top: 1px solid var(--gray-800); }
-        .footer-container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 35px; border-bottom: 1px solid var(--gray-800); margin-bottom: 35px; }
-        .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: var(--white); }
-        .footer-logo span { color: var(--cyan); }
-        .footer-social { display: flex; gap: 12px; }
-        .footer-social a { width: 44px; height: 44px; border-radius: 10px; background: var(--bg-tertiary); border: 1px solid var(--gray-800); display: flex; align-items: center; justify-content: center; color: var(--gray-400); font-size: 16px; transition: var(--transition); }
-        .footer-social a:hover { background: var(--cyan); border-color: var(--cyan); color: var(--bg-primary); transform: translateY(-3px); }
-        .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
-        .footer-bottom p { font-size: 13px; color: var(--gray-500); }
-        .footer-links { display: flex; gap: 30px; }
-        .footer-links a { font-size: 13px; color: var(--gray-500); text-decoration: none; transition: var(--transition); }
-        .footer-links a:hover { color: var(--cyan); }
-
-        .fade-in { opacity: 0; transform: translateY(35px); transition: opacity 0.6s, transform 0.6s; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        .mobile-nav { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.98); backdrop-filter: blur(20px); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px; opacity: 0; visibility: hidden; transition: var(--transition); }
-        .mobile-nav.active { opacity: 1; visibility: visible; }
-        .mobile-nav a { font-size: 22px; color: var(--white); text-decoration: none; font-weight: 600; transition: var(--transition); }
-        .mobile-nav a:hover { color: var(--cyan); }
-        .mobile-nav-close { position: absolute; top: 28px; right: 28px; font-size: 30px; color: var(--white); cursor: pointer; }
-
-        @media (max-width: 1200px) {
-            .hero-title { font-size: 52px; }
-            .section-title { font-size: 40px; }
-            .projects-grid { grid-template-columns: repeat(2, 1fr); }
-            .certs-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 992px) {
-            .nav-links, .nav-cta { display: none; }
-            .mobile-toggle { display: flex; }
-            .hero-container { grid-template-columns: 1fr; text-align: center; gap: 45px; }
-            .hero-content { order: 2; }
-            .hero-visual { order: 1; }
-            .hero-description { margin: 0 auto 35px; }
-            .hero-buttons { justify-content: center; }
-            .hero-stats { justify-content: center; }
-            .profile-container { width: 300px; height: 380px; }
-            .about-grid { grid-template-columns: 1fr; gap: 35px; }
-            .skills-grid { grid-template-columns: repeat(2, 1fr); }
-            .awards-grid { grid-template-columns: repeat(2, 1fr); }
-            .contact-wrapper { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            .hero { padding: 110px 0 70px; }
-            .hero-title { font-size: 38px; }
-            .hero-subtitle { font-size: 18px; }
-            .hero-stats { gap: 28px; }
-            .stat-number { font-size: 34px; }
-            .floating-card { display: none; }
-            section { padding: 70px 0; }
-            .section-title { font-size: 32px; }
-            .section-header { margin-bottom: 45px; }
-            .skills-grid, .projects-grid, .certs-grid, .awards-grid, .education-grid { grid-template-columns: 1fr; }
-            .about-highlights { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .contact-form-wrapper { padding: 28px; }
-            .footer-top, .footer-bottom { flex-direction: column; gap: 22px; text-align: center; }
-        }
-        @media (max-width: 480px) {
-            .hero-title { font-size: 30px; }
-            .hero-buttons { flex-direction: column; width: 100%; }
-            .hero-buttons a { width: 100%; justify-content: center; }
-            .hero-stats { flex-direction: column; gap: 18px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohan Samanthakurthi | Data Engineer Portfolio</title>
+  <meta name="description" content="Portfolio of Mohan Samanthakurthi, Azure Data Engineer, Power BI Analyst and AI for Business graduate based in Dublin, Ireland.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root{--bg:#050505;--bg2:#0b0b0b;--card:#111;--card2:#161616;--text:#fff;--muted:#a3a3a3;--muted2:#737373;--cyan:#00d4ff;--line:rgba(0,212,255,.18);--glow:rgba(0,212,255,.18)}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}a{text-decoration:none;color:inherit}.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 10% 0%,rgba(0,212,255,.16),transparent 30%),radial-gradient(circle at 90% 25%,rgba(16,185,129,.10),transparent 28%),linear-gradient(rgba(0,212,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.025) 1px,transparent 1px);background-size:auto,auto,80px 80px,80px 80px}
+    nav{position:sticky;top:0;z-index:10;background:rgba(5,5,5,.86);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.06)}.nav{max-width:1220px;margin:auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}.logo{font-family:Space Grotesk,sans-serif;font-size:25px;font-weight:700}.logo span{color:var(--cyan)}.links{display:flex;gap:24px;align-items:center}.links a{font-size:14px;color:var(--muted);font-weight:600}.links a:hover{color:var(--cyan)}.btn{display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border-radius:10px;border:1px solid var(--line);font-weight:700;color:var(--cyan);background:rgba(0,212,255,.05)}.btn.primary{background:var(--cyan);color:#001018;box-shadow:0 0 28px rgba(0,212,255,.24)}.btn:hover{transform:translateY(-2px)}
+    section{padding:88px 24px}.wrap{max-width:1220px;margin:auto}.hero{padding-top:115px;min-height:86vh;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}.badge{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border:1px solid var(--line);border-radius:999px;color:var(--cyan);font-size:13px;font-weight:700;background:rgba(0,212,255,.06);margin-bottom:22px}.pulse{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 12px #22c55e}.hero h1{font-family:Space Grotesk,sans-serif;font-size:64px;line-height:1.04;letter-spacing:-2px;margin-bottom:18px}.hero h1 span{color:var(--cyan);text-shadow:0 0 30px rgba(0,212,255,.35)}.subtitle{font-size:22px;color:#d4d4d4;margin-bottom:18px}.desc{color:var(--muted);max-width:630px;margin-bottom:30px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap}.stats{display:flex;gap:36px;margin-top:42px;flex-wrap:wrap}.stat strong{font-family:Space Grotesk,sans-serif;font-size:38px;display:block}.stat small{font-size:12px;color:var(--muted2);text-transform:uppercase;letter-spacing:1px}.visual{border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,rgba(0,212,255,.08),rgba(255,255,255,.03));padding:30px;box-shadow:0 24px 90px rgba(0,0,0,.35)}.tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tech{height:92px;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:28px;color:#fff;background:#111827;border:1px solid rgba(255,255,255,.08)}.tech span{font-size:11px;margin-top:7px;font-weight:700;color:#d1d5db}.tech.azure{background:linear-gradient(135deg,#0078d4,#00bcf2)}.tech.fabric{background:linear-gradient(135deg,#0ea5e9,#06b6d4)}.tech.powerbi{background:linear-gradient(135deg,#f2c811,#d97706);color:#111}.tech.python{background:linear-gradient(135deg,#3776ab,#ffd43b)}.tech.sql{background:linear-gradient(135deg,#cc2927,#ef4444)}.tech.spark{background:linear-gradient(135deg,#f97316,#f59e0b)}
+    .section-head{text-align:center;margin-bottom:46px}.label{font-family:JetBrains Mono,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}.section-head h2{font-family:Space Grotesk,sans-serif;font-size:44px;letter-spacing:-1px}.section-head h2 span{color:var(--cyan)}.section-head p{color:var(--muted2);max-width:660px;margin:12px auto 0}.grid{display:grid;gap:24px}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-2{grid-template-columns:repeat(2,1fr)}.card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:22px;overflow:hidden;transition:.28s}.card:hover{transform:translateY(-8px);border-color:var(--cyan);box-shadow:0 20px 60px rgba(0,212,255,.12)}.card-img{height:190px;background:#0f172a;overflow:hidden}.card-img img{width:100%;height:100%;object-fit:cover;display:block}.card-body{padding:24px}.cat{font-family:JetBrains Mono,monospace;font-size:11px;color:var(--cyan);text-transform:uppercase;letter-spacing:1.4px;margin-bottom:9px;display:block}.card h3{font-size:20px;margin-bottom:10px}.card p{font-size:14px;color:var(--muted);margin-bottom:18px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}.tags span{font-family:JetBrains Mono,monospace;font-size:10px;padding:5px 9px;border-radius:7px;background:var(--card2);color:var(--muted);border:1px solid rgba(255,255,255,.06)}.card-actions{display:flex;gap:10px;flex-wrap:wrap}.mini-btn{font-size:12px;font-weight:800;padding:8px 12px;border-radius:8px;border:1px solid var(--line);color:var(--cyan);background:rgba(0,212,255,.04)}.mini-btn.live{background:var(--cyan);color:#001018}.about{background:var(--bg2)}.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:35px}.about-box{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:30px}.about-box h3{font-size:26px;margin-bottom:14px}.about-box p{color:var(--muted);margin-bottom:14px}.skill-list{display:flex;gap:10px;flex-wrap:wrap}.skill-list span{padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--cyan);font-size:12px;font-weight:700}.timeline{max-width:900px;margin:auto}.role{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px;margin-bottom:18px}.role h3{font-size:21px}.role h4{color:var(--cyan);margin:6px 0 10px}.role p,.role li{color:var(--muted);font-size:14px}.role ul{padding-left:18px;margin-top:10px}.contact{background:var(--bg2)}.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.contact-card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px}.contact-card i{color:var(--cyan);font-size:24px;margin-bottom:12px}.contact-card h3{font-size:17px}.contact-card p{font-size:14px;color:var(--muted)}footer{padding:36px 24px;border-top:1px solid rgba(255,255,255,.08);text-align:center;color:var(--muted2)}
+    @media(max-width:960px){.hero{grid-template-columns:1fr}.grid-3,.grid-2,.about-grid,.contact-grid{grid-template-columns:1fr}.links{display:none}.hero h1{font-size:46px}.section-head h2{font-size:34px}.stats{gap:22px}.tech-grid{grid-template-columns:repeat(2,1fr)}}
+  </style>
 </head>
 <body>
-    <div class="loader-wrapper" id="loader"><div class="loader"><div class="loader-spinner"></div></div></div>
-    <div class="bg-effects"><div class="bg-grid"></div><div class="bg-glow bg-glow-1"></div><div class="bg-glow bg-glow-2"></div></div>
-
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">Mohan<span>.</span></div>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#blog">Blog</a></li>
-            </ul>
-            <div class="nav-cta"><a href="Mohan_DE_Resume.pdf" download class="btn"><i class="fas fa-download"></i> Resume</a></div>
-            <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
-        </div>
-    </nav>
-
-    <div class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav-close" id="mobileNavClose"><i class="fas fa-times"></i></div>
-        <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a><a href="#blog">Blog</a>
+  <div class="bg"></div>
+  <nav>
+    <div class="nav">
+      <a class="logo" href="#home">Mohan<span>.</span></a>
+      <div class="links">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
+      </div>
+      <a class="btn" href="Mohan_DE_Resume.pdf" download><i class="fas fa-download"></i> Resume</a>
     </div>
+  </nav>
 
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge"><div class="pulse"></div>Available for opportunities • Stamp 1G Visa</div>
-                <h1 class="hero-title">Hi, I'm <span class="highlight">Mohan</span></h1>
-                <p class="hero-subtitle"><span>Azure Data Engineer</span> | Power BI Analyst | AI for Business</p>
-                <p class="hero-description">Microsoft Certified professional with 3+ years at Cognizant, specializing in enterprise data solutions, cloud architecture, and business intelligence. Building data pipelines that transform millions of records into actionable insights.</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn-primary"><i class="fas fa-folder-open"></i> View Projects</a>
-                    <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Get In Touch</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item"><div class="stat-number">3<span>+</span></div><div class="stat-label">Years Experience</div></div>
-                    <div class="stat-item"><div class="stat-number">7</div><div class="stat-label">Certifications</div></div>
-                    <div class="stat-item"><div class="stat-number">3</div><div class="stat-label">Awards Won</div></div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="profile-container">
-                    <div class="tech-stack-visual">
-                        <div class="tech-hex-grid">
-                            <div class="tech-hex-item azure"><i class="fab fa-microsoft"></i><span>Azure</span></div>
-                            <div class="tech-hex-item powerbi"><i class="fas fa-chart-pie"></i><span>Power BI</span></div>
-                            <div class="tech-hex-item python"><i class="fab fa-python"></i><span>Python</span></div>
-                            <div class="tech-hex-item sql"><i class="fas fa-database"></i><span>SQL</span></div>
-                            <div class="tech-hex-item databricks"><i class="fas fa-cubes"></i><span>Databricks</span></div>
-                            <div class="tech-hex-item fabric"><i class="fas fa-cloud"></i><span>Fabric</span></div>
-                            <div class="tech-hex-item spark"><i class="fas fa-bolt"></i><span>Spark</span></div>
-                            <div class="tech-hex-item etl"><i class="fas fa-exchange-alt"></i><span>ETL</span></div>
-                            <div class="tech-hex-item git"><i class="fab fa-git-alt"></i><span>Git</span></div>
-                        </div>
-                    </div>
-                    <div class="floating-badge floating-badge-1">
-                        <div class="floating-badge-icon cert"><i class="fas fa-certificate"></i></div>
-                        <div><h4>7 Certifications</h4><p>Microsoft, Oracle, Coursera</p></div>
-                    </div>
-                    <div class="floating-badge floating-badge-2">
-                        <div class="floating-badge-icon award"><i class="fas fa-trophy"></i></div>
-                        <div><h4>3 Awards</h4><p>Best Employee 2024</p></div>
-                    </div>
-                </div>
-            </div>
+  <main>
+    <section id="home" class="wrap hero">
+      <div>
+        <div class="badge"><span class="pulse"></span> Available for Data Engineering roles in Ireland</div>
+        <h1>Hi, I'm <span>Mohan</span></h1>
+        <p class="subtitle">Azure Data Engineer | Power BI Analyst | AI for Business</p>
+        <p class="desc">Microsoft certified data professional with 3+ years of enterprise experience at Cognizant. I build cloud data pipelines, analytics dashboards, semantic models, and AI-enabled data products using Azure, Microsoft Fabric, Databricks, SQL, Python and Power BI.</p>
+        <div class="hero-actions"><a class="btn primary" href="#projects"><i class="fas fa-folder-open"></i> View Projects</a><a class="btn" href="#contact"><i class="fas fa-paper-plane"></i> Contact Me</a><a class="btn" href="https://medium.com/@smlsmohan111" target="_blank"><i class="fab fa-medium"></i> Medium</a></div>
+        <div class="stats"><div class="stat"><strong>3+</strong><small>Years experience</small></div><div class="stat"><strong>82K+</strong><small>CORDIS records processed</small></div><div class="stat"><strong>50+</strong><small>SQL workloads migrated</small></div></div>
+      </div>
+      <div class="visual">
+        <div class="tech-grid">
+          <div class="tech azure"><i class="fab fa-microsoft"></i><span>Azure</span></div><div class="tech fabric"><i class="fas fa-layer-group"></i><span>Fabric</span></div><div class="tech powerbi"><i class="fas fa-chart-pie"></i><span>Power BI</span></div><div class="tech python"><i class="fab fa-python"></i><span>Python</span></div><div class="tech sql"><i class="fas fa-database"></i><span>SQL</span></div><div class="tech spark"><i class="fas fa-bolt"></i><span>Spark</span></div>
         </div>
+      </div>
     </section>
 
-    <section id="about">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <div class="section-label">About Me</div>
-                <h2 class="section-title">Transforming Data Into <span>Value</span></h2>
-                <p class="section-description">A passionate data professional dedicated to building scalable, efficient data solutions.</p>
-            </div>
-            <div class="about-grid">
-                <div class="about-image fade-in"><img src="mohan linkedin image.jpeg" alt="Mohan Samanthakurthi"></div>
-                <div class="about-content fade-in">
-                    <h3>Data Engineer at <span>Cognizant</span></h3>
-                    <p>Certified Azure Data Engineer (DP-700) and Power BI Data Analyst (PL-300) with 3+ years of enterprise experience delivering data solutions for Fortune 500 healthcare clients including Optum Finance and CareSource.</p>
-                    <p>Currently completing MSc in AI for Business at National College of Ireland, Dublin, with research focus on Hybrid Ant Colony Optimization for last-mile delivery using ML frameworks. My work has been recognized with the Best Employee Award 2024 for exceptional contributions to project delivery.</p>
-                    <div class="about-highlights">
-                        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-cloud"></i></div><div class="highlight-content"><h4>Cloud Architecture</h4><p>Azure Data Factory, Databricks, Fabric</p></div></div>
-                        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-chart-bar"></i></div><div class="highlight-content"><h4>Business Intelligence</h4><p>Power BI, SSRS, DAX, Power Query</p></div></div>
-                        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-database"></i></div><div class="highlight-content"><h4>Data Engineering</h4><p>T-SQL, SSIS, ETL, 50+ Migrations</p></div></div>
-                        <div class="highlight-item"><div class="highlight-icon"><i class="fas fa-brain"></i></div><div class="highlight-content"><h4>AI & Machine Learning</h4><p>Python, PySpark, TensorFlow, NLP</p></div></div>
-                    </div>
-                </div>
-            </div>
+    <section id="about" class="about">
+      <div class="wrap">
+        <div class="section-head"><div class="label">About</div><h2>Data Engineering With <span>Business Impact</span></h2><p>Focused on building reliable, analytics-ready data products across cloud, BI and AI use cases.</p></div>
+        <div class="about-grid">
+          <div class="about-box"><h3>Profile</h3><p>Based in Dublin, Ireland. MSc in Artificial Intelligence for Business at National College of Ireland. Prior Cognizant experience supporting healthcare and finance clients including Optum Finance and CareSource.</p><p>My recent focus is Microsoft Fabric, medallion architecture, CORDIS open data engineering, Power BI semantic modelling, and production-ready Supabase/Next.js web apps.</p></div>
+          <div class="about-box"><h3>Core Skills</h3><div class="skill-list"><span>Azure Data Factory</span><span>Azure Databricks</span><span>Microsoft Fabric</span><span>Lakehouse</span><span>PySpark</span><span>SQL Server</span><span>Power BI</span><span>DAX</span><span>SSIS</span><span>SSRS</span><span>Python</span><span>Supabase</span><span>Next.js</span><span>Data Modelling</span><span>ETL/ELT</span></div></div>
         </div>
-    </section>
-
-    <section id="skills">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <div class="section-label">Technical Skills</div>
-                <h2 class="section-title">My <span>Tech Stack</span></h2>
-                <p class="section-description">Comprehensive expertise across cloud platforms, data engineering, and analytics.</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card fade-in"><div class="skill-icon azure"><i class="fab fa-microsoft"></i></div><h3>Cloud & Azure</h3><p>Building scalable cloud data solutions with modern Azure services.</p><div class="skill-tags"><span class="skill-tag">Data Factory</span><span class="skill-tag">Databricks</span><span class="skill-tag">Fabric</span><span class="skill-tag">Lakehouse</span><span class="skill-tag">OneLake</span><span class="skill-tag">Synapse</span><span class="skill-tag">Medallion</span></div></div>
-                <div class="skill-card fade-in"><div class="skill-icon bi"><i class="fas fa-chart-pie"></i></div><h3>BI & Reporting</h3><p>Creating compelling visualizations and enterprise reporting solutions.</p><div class="skill-tags"><span class="skill-tag">Power BI</span><span class="skill-tag">DAX</span><span class="skill-tag">Power Query</span><span class="skill-tag">SSRS</span><span class="skill-tag">Jaspersoft</span><span class="skill-tag">RLS</span></div></div>
-                <div class="skill-card fade-in"><div class="skill-icon data"><i class="fas fa-database"></i></div><h3>Data Engineering</h3><p>Building robust ETL pipelines and data warehouse solutions.</p><div class="skill-tags"><span class="skill-tag">T-SQL</span><span class="skill-tag">SSIS</span><span class="skill-tag">SQL Server</span><span class="skill-tag">ETL/ELT</span><span class="skill-tag">Star Schema</span><span class="skill-tag">Data Modeling</span></div></div>
-                <div class="skill-card fade-in"><div class="skill-icon python"><i class="fab fa-python"></i></div><h3>Programming</h3><p>Writing efficient code for data processing and automation.</p><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">PySpark</span><span class="skill-tag">SQL</span><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span></div></div>
-                <div class="skill-card fade-in"><div class="skill-icon ml"><i class="fas fa-robot"></i></div><h3>AI & Machine Learning</h3><p>Implementing intelligent solutions with modern ML frameworks.</p><div class="skill-tags"><span class="skill-tag">TensorFlow</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">NLP</span><span class="skill-tag">Neural Networks</span></div></div>
-                <div class="skill-card fade-in"><div class="skill-icon devops"><i class="fas fa-code-branch"></i></div><h3>DevOps & Tools</h3><p>Streamlining development workflows and deployments.</p><div class="skill-tags"><span class="skill-tag">Git</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Azure DevOps</span><span class="skill-tag">Jira</span><span class="skill-tag">Agile</span></div></div>
-            </div>
-        </div>
+      </div>
     </section>
 
     <section id="experience">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <div class="section-label">Experience</div>
-                <h2 class="section-title">Professional <span>Journey</span></h2>
-                <p class="section-description">Building enterprise data solutions at scale for Fortune 500 clients.</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header"><div class="timeline-company"><div class="company-logo"><img src="Cognizant-Logo.jpg" alt="Cognizant"></div><div><h3>Optum Finance (United Health Group)</h3><h4>Associate Engineer @ Cognizant, Hyderabad, India</h4></div></div><span class="timeline-date">Jul 2024 - Dec 2024</span></div>
-                        <ul>
-                            <li>Engineered Azure Databricks workflows and Power BI dashboards using PySpark, Azure SQL, and DAX, enabling finance stakeholders to monitor KPIs in real time and reduce manual Excel-based reporting by nearly 30%.</li>
-                            <li>Designed and optimized large-scale PySpark transformation pipelines (joins, aggregations, standardization) across Medallion architecture layers, improving data processing efficiency and ensuring analytics-ready datasets.</li>
-                            <li>Migrated 50+ SQL scripts to Azure Databricks Notebooks, automating batch data loads via workflows and configuration tables, improving execution performance by 25% and reducing operational dependency.</li>
-                            <li>Automated 20+ Jaspersoft and SSRS reports with scheduled executions, ensuring 100% on time financial reporting and improving reporting reliability under strict client SLAs.</li>
-                            <li>Delivered sprint commitments in Agile and Kanban environments, consistently meeting deadlines for one of the largest U.S. managed care finance programs.</li>
-                        </ul>
-                        <div class="timeline-tech"><span>Azure Databricks</span><span>PySpark</span><span>Power BI</span><span>Azure SQL</span><span>DAX</span><span>Jaspersoft</span><span>SSRS</span></div>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header"><div class="timeline-company"><div class="company-logo"><img src="Cognizant-Logo.jpg" alt="Cognizant"></div><div><h3>CareSource – BI Reporting 2.0</h3><h4>Associate Engineer @ Cognizant, Hyderabad, India</h4></div></div><span class="timeline-date">Oct 2023 - Jun 2024</span></div>
-                        <ul>
-                            <li>Led Proof of Concept for CareSource, migrating from on-prem SSIS/SSRS to Azure Databricks SQL, validating cloud feasibility and achieving 30% faster report generation and achieved 99.9% availability.</li>
-                            <li>Designed cloud-native data architecture within 1 month of Azure onboarding, replicating legacy SSIS packages and SSRS reports into Databricks and Power BI, improving scalability and system performance.</li>
-                            <li>Migrated legacy ETL and reporting workloads to Azure Databricks and Power BI, reducing report generation time and enhancing cross domain data accessibility.</li>
-                            <li>Re-engineered SSIS ETL workflows into Databricks SQL and PySpark based ELT pipelines, orchestrated using Databricks workflows.</li>
-                        </ul>
-                        <div class="timeline-tech"><span>Azure Databricks</span><span>SSIS</span><span>SSRS</span><span>Power BI</span><span>PySpark</span><span>Databricks SQL</span></div>
-                    </div>
-                </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header"><div class="timeline-company"><div class="company-logo"><img src="Cognizant-Logo.jpg" alt="Cognizant"></div><div><h3>CareSource – Reporting</h3><h4>Programmer Analyst @ Cognizant, Hyderabad, India</h4></div></div><span class="timeline-date">Nov 2021 - Sep 2023</span></div>
-                        <ul>
-                            <li>Developed and optimized complex T-SQL stored procedures and SSIS ETL pipelines processing high-volume finance and claims datasets, improving query performance by 20% through indexing and tuning strategies.</li>
-                            <li>Designed and deployed 30+ parameterized SSRS reports (drill-down, matrix, dynamic formatting), enhancing business visibility across multi-state healthcare operations.</li>
-                            <li>Built robust ETL solutions integrating heterogeneous data sources (SQL Server, flat files, Excel, ODBC/OLE DB), ensuring data consistency and integrity across reporting systems.</li>
-                            <li>Automated bulk data operations using advanced SSIS control flows and transformations (For Loop, For Each, Execute SQL, Bulk Insert) to automate complex finance and claims data workflows.</li>
-                            <li>Managed deployments using Git and CI/CD pipelines, ensuring stable releases and seamless operations across Indiana, Ohio, West Virginia, and Georgia business domains.</li>
-                            <li>Designed indexed views, triggers, user-defined functions, and constraints in SQL Server to enforce data integrity and improve transactional performance.</li>
-                        </ul>
-                        <div class="timeline-tech"><span>T-SQL</span><span>SSIS</span><span>SSRS</span><span>SQL Server</span><span>Git</span><span>CI/CD</span><span>ETL</span></div>
-                    </div>
-                </div>
-            </div>
+      <div class="wrap">
+        <div class="section-head"><div class="label">Experience</div><h2>Professional <span>Journey</span></h2><p>Enterprise data engineering, BI reporting and cloud migration experience.</p></div>
+        <div class="timeline">
+          <div class="role"><h3>Optum Finance / UnitedHealth Group</h3><h4>Associate Engineer @ Cognizant | Jul 2024 - Dec 2024</h4><ul><li>Built Azure Databricks workflows and Power BI dashboards for finance KPI reporting.</li><li>Migrated SQL scripts to Databricks notebooks and supported automated reporting workflows.</li><li>Worked with PySpark, Azure SQL, DAX, SSRS and Jaspersoft reporting.</li></ul></div>
+          <div class="role"><h3>CareSource BI Reporting 2.0</h3><h4>Associate Engineer @ Cognizant | Oct 2023 - Jun 2024</h4><ul><li>Supported cloud migration from SSIS/SSRS workloads to Azure Databricks and Power BI.</li><li>Re-engineered reporting pipelines and helped validate cloud feasibility for BI workloads.</li></ul></div>
+          <div class="role"><h3>CareSource Reporting</h3><h4>Programmer Analyst @ Cognizant | Nov 2021 - Sep 2023</h4><ul><li>Developed T-SQL stored procedures, SSIS ETL packages and SSRS reports.</li><li>Optimised SQL workloads and supported enterprise healthcare reporting across business domains.</li></ul></div>
         </div>
+      </div>
     </section>
 
-    <section id="projects">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <div class="section-label">Portfolio</div>
-                <h2 class="section-title">Featured <span>Projects</span></h2>
-                <p class="section-description">A showcase of enterprise solutions and academic innovations.</p>
-            </div>
-            <div class="projects-filter fade-in">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="academic">Academic</button>
-                <button class="filter-btn" data-filter="industry">Industry</button>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card fade-in" data-category="academic"><div class="project-image" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fas fa-project-diagram"></i></div><div class="project-content"><span class="project-category">MSc Dissertation</span><h3>Hybrid Ant Colony Optimization</h3><p>Research on network optimization algorithms combining ACO with local search heuristics.</p><div class="project-tech"><span>Python</span><span>Optimization</span><span>Algorithms</span></div></div></div>
-                <div class="project-card fade-in" data-category="academic"><div class="project-image" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)"><i class="fas fa-users"></i></div><div class="project-content"><span class="project-category">Full-Stack</span><h3>Student Research Assistant Web App</h3><p>Academic collaboration platform connecting students with research opportunities.</p><div class="project-tech"><span>React</span><span>Node.js</span><span>MongoDB</span></div></div></div>
-                <div class="project-card fade-in" data-category="academic"><div class="project-image" style="background:linear-gradient(135deg,#f59e0b,#ef4444)"><i class="fas fa-hospital-user"></i></div><div class="project-content"><span class="project-category">Machine Learning</span><h3>AI-Powered GP Appointment System</h3><p>ML-based appointment booking with intelligent scheduling and priority prediction.</p><div class="project-tech"><span>Python</span><span>Scikit-learn</span><span>Flask</span></div></div></div>
-                <div class="project-card fade-in" data-category="academic"><div class="project-image" style="background:linear-gradient(135deg,#ec4899,#8b5cf6)"><i class="fas fa-robot"></i></div><div class="project-content"><span class="project-category">RPA</span><h3>Leap Card Automation</h3><p>UiPath RPA solution for automating transit card top-up workflows.</p><div class="project-tech"><span>UiPath</span><span>RPA</span><span>Automation</span></div></div></div>
-                <div class="project-card fade-in" data-category="industry"><div class="project-image"><i class="fas fa-shield-alt"></i></div><div class="project-content"><span class="project-category">Enterprise</span><h3>TULU AI Risk Management</h3><p>Enterprise risk assessment platform with AI-powered change management.</p><div class="project-tech"><span>Azure</span><span>Power BI</span><span>Python</span></div></div></div>
-                <div class="project-card fade-in" data-category="industry"><div class="project-image" style="background:linear-gradient(135deg,#0078d4,#00bcf2)"><i class="fas fa-database"></i></div><div class="project-content"><span class="project-category">Data Engineering</span><h3>Healthcare Data Pipeline</h3><p>End-to-end Azure solution processing 10M+ daily healthcare transactions.</p><div class="project-tech"><span>Azure Data Factory</span><span>Databricks</span><span>Delta Lake</span></div></div></div>
-            </div>
+    <section id="projects" class="about">
+      <div class="wrap">
+        <div class="section-head"><div class="label">Portfolio</div><h2>Featured <span>Projects</span></h2><p>Projects covering data engineering, Microsoft Fabric, BI, AI research, full-stack web apps and risk management.</p></div>
+        <div class="grid grid-3">
+          <article class="card"><div class="card-img"><img src="assets/projects/cordis-research-explorer.svg" alt="CORDIS Research Explorer preview"></div><div class="card-body"><span class="cat">Live Web App</span><h3>CORDIS Research Explorer</h3><p>Next.js and Supabase web application for discovering European research projects using cleaned CORDIS data, filters, dashboards and research chat.</p><div class="tags"><span>Next.js</span><span>Supabase</span><span>ETL</span><span>Dashboard</span></div><div class="card-actions"><a class="mini-btn live" href="https://student-research-assistant-app.vercel.app/" target="_blank">Live App</a><a class="mini-btn" href="https://github.com/smlsmohan/Student-Research-Assistant-App" target="_blank">GitHub</a></div></div></article>
+          <article class="card"><div class="card-img"><img src="assets/projects/fabric-cordis-platform.svg" alt="Fabric CORDIS data platform preview"></div><div class="card-body"><span class="cat">Data Engineering</span><h3>CORDIS Fabric Data Platform</h3><p>Microsoft Fabric medallion architecture project with Landing, Bronze, Silver and Gold layers, audit logging, data quality checks and Power BI-ready semantic modelling.</p><div class="tags"><span>Fabric</span><span>Lakehouse</span><span>PySpark</span><span>Power BI</span></div><div class="card-actions"><a class="mini-btn" href="#contact">Discuss Project</a></div></div></article>
+          <article class="card"><div class="card-img"><img src="assets/projects/ml-aco-route-optimisation.svg" alt="Hybrid ML ACO preview"></div><div class="card-body"><span class="cat">MSc Practicum</span><h3>Hybrid ML-ACO Route Optimisation</h3><p>Research project comparing KNN-ACO, ANN-ACO and LSTM-ACO for last-mile route optimisation and vehicle routing analysis.</p><div class="tags"><span>Python</span><span>ACO</span><span>KNN</span><span>LSTM</span></div><div class="card-actions"><a class="mini-btn live" href="projects/hybrid-ml-aco-route-optimisation.html">View Case Study</a></div></div></article>
+          <article class="card"><div class="card-img"><img src="assets/projects/ai-gp-booking.svg" alt="AI GP booking preview"></div><div class="card-body"><span class="cat">AI Product Concept</span><h3>AI GP Booking Platform</h3><p>Healthcare appointment booking concept with real-time availability, NLP chatbot support, Eircode-based search, reminders and ML no-show prediction.</p><div class="tags"><span>NLP</span><span>Flask</span><span>Rasa</span><span>SQL</span></div><div class="card-actions"><a class="mini-btn" href="#contact">View Summary</a></div></div></article>
+          <article class="card"><div class="card-img"><img src="assets/projects/tulu-risk-framework.svg" alt="TULU risk framework preview"></div><div class="card-body"><span class="cat">Risk & Change</span><h3>TULU AI Risk Framework</h3><p>Risk and change management framework for an AI rental kiosk platform covering GDPR, fraud, inventory, system failure and user adoption risks.</p><div class="tags"><span>ISO 31000</span><span>NIST RMF</span><span>GDPR</span><span>Change</span></div><div class="card-actions"><a class="mini-btn" href="#contact">View Summary</a></div></div></article>
+          <article class="card"><div class="card-img"><img src="assets/projects/cordis-research-explorer.svg" alt="Supabase ETL preview"></div><div class="card-body"><span class="cat">Portable ETL</span><h3>CORDIS to Supabase Pipeline</h3><p>Portable Python ETL flow to transform CORDIS source files into clean web-ready project datasets and load them into Supabase.</p><div class="tags"><span>Python</span><span>Pandas</span><span>Parquet</span><span>Supabase</span></div><div class="card-actions"><a class="mini-btn" href="https://github.com/smlsmohan/cordis-to-supabase" target="_blank">GitHub</a></div></div></article>
         </div>
+      </div>
     </section>
 
     <section id="blog">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <div class="section-label">Blog</div>
-                <h2 class="section-title">Latest <span>Articles</span></h2>
-                <p class="section-description">Sharing insights on Cloud, Data Engineering, AI, and Software Development.</p>
-            </div>
-            <div class="blog-grid">
-                <a href="https://medium.com/@smlsmohan111/from-renting-servers-to-ai-everywhere-how-cloud-evolved-and-why-cloud-feels-different-now-cd8c14e13025" target="_blank" class="blog-card fade-in">
-                    <div class="blog-image" style="background:linear-gradient(135deg,#0078d4,#00bcf2)"><i class="fas fa-cloud"></i></div>
-                    <div class="blog-content">
-                        <div class="blog-date">Feb 20, 2026</div>
-                        <h3>From "Renting Servers" to "AI Everywhere": How Cloud Evolved</h3>
-                        <p>Exploring the evolution of cloud computing and why it feels different now with AI integration.</p>
-                        <div class="blog-tags"><span class="blog-tag">Cloud</span><span class="blog-tag">AI</span><span class="blog-tag">Azure</span></div>
-                    </div>
-                </a>
-                <a href="https://medium.com/@smlsmohan111/python-basics-that-multiply-with-ai-a-student-friendly-kick-start-guide-cd645428df48" target="_blank" class="blog-card fade-in">
-                    <div class="blog-image" style="background:linear-gradient(135deg,#3776ab,#ffd43b)"><i class="fab fa-python"></i></div>
-                    <div class="blog-content">
-                        <div class="blog-date">Aug 28, 2025</div>
-                        <h3>Python Basics That Multiply With AI</h3>
-                        <p>A student-friendly kick start guide to Python fundamentals that scale with AI applications.</p>
-                        <div class="blog-tags"><span class="blog-tag">Python</span><span class="blog-tag">AI</span><span class="blog-tag">Beginners</span></div>
-                    </div>
-                </a>
-                <a href="https://medium.com/@smlsmohan111/you-still-need-skills-how-ai-made-me-faster-and-where-it-didnt-82c5c5122bd7" target="_blank" class="blog-card fade-in">
-                    <div class="blog-image" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)"><i class="fas fa-robot"></i></div>
-                    <div class="blog-content">
-                        <div class="blog-date">2026</div>
-                        <h3>You Still Need Skills: How AI Made Me Faster</h3>
-                        <p>Honest insights on where AI accelerates productivity and where human skills remain essential.</p>
-                        <div class="blog-tags"><span class="blog-tag">AI</span><span class="blog-tag">Productivity</span><span class="blog-tag">Skills</span></div>
-                    </div>
-                </a>
-                <a href="https://medium.com/@smlsmohan111/from-beginner-to-confident-final-git-guide-on-branching-merging-and-real-world-workflow-b57a66acfa68" target="_blank" class="blog-card fade-in">
-                    <div class="blog-image" style="background:linear-gradient(135deg,#f05032,#ff6b4a)"><i class="fab fa-git-alt"></i></div>
-                    <div class="blog-content">
-                        <div class="blog-date">2026</div>
-                        <h3>Final Git Guide: Branching, Merging & Real-World Workflow</h3>
-                        <p>From beginner to confident: A comprehensive guide to Git workflows.</p>
-                        <div class="blog-tags"><span class="blog-tag">Git</span><span class="blog-tag">DevOps</span><span class="blog-tag">Workflow</span></div>
-                    </div>
-                </a>
-                <a href="https://medium.com/@smlsmohan111/your-first-git-project-3-key-steps-to-set-up-commit-and-push-to-github-be675acdc761" target="_blank" class="blog-card fade-in">
-                    <div class="blog-image" style="background:linear-gradient(135deg,#24292e,#586069)"><i class="fab fa-github"></i></div>
-                    <div class="blog-content">
-                        <div class="blog-date">2026</div>
-                        <h3>Your First Git Project: 3 Key Steps</h3>
-                        <p>Set up, commit, and push to GitHub - a practical beginner's guide.</p>
-                        <div class="blog-tags"><span class="blog-tag">Git</span><span class="blog-tag">GitHub</span><span class="blog-tag">Tutorial</span></div>
-                    </div>
-                </a>
-                <a href="https://medium.com/@smlsmohan111/3-easy-steps-to-start-with-github-81ed62f2b037" target="_blank" class="blog-card fade-in">
-                    <div class="blog-image" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fas fa-code-branch"></i></div>
-                    <div class="blog-content">
-                        <div class="blog-date">2026</div>
-                        <h3>3 Easy Steps to Start with GitHub</h3>
-                        <p>Quick guide to getting started with GitHub for version control.</p>
-                        <div class="blog-tags"><span class="blog-tag">GitHub</span><span class="blog-tag">Beginners</span><span class="blog-tag">Guide</span></div>
-                    </div>
-                </a>
-            </div>
+      <div class="wrap">
+        <div class="section-head"><div class="label">Blog</div><h2>Medium <span>Articles</span></h2><p>Selected writing on cloud, AI, Python, Git and practical learning.</p></div>
+        <div class="grid grid-3">
+          <a class="card" href="https://medium.com/@smlsmohan111/from-renting-servers-to-ai-everywhere-how-cloud-evolved-and-why-cloud-feels-different-now-cd8c14e13025" target="_blank"><div class="card-img"><img src="assets/blog/cloud-evolution.svg" alt="Cloud evolution blog preview"></div><div class="card-body"><span class="cat">Cloud & AI</span><h3>From Renting Servers to AI Everywhere</h3><p>How cloud evolved and why modern cloud feels different with AI.</p><div class="tags"><span>Cloud</span><span>AI</span><span>Azure</span></div></div></a>
+          <a class="card" href="https://medium.com/@smlsmohan111/python-basics-that-multiply-with-ai-a-student-friendly-kick-start-guide-cd645428df48" target="_blank"><div class="card-img"><img src="assets/blog/python-ai.svg" alt="Python AI blog preview"></div><div class="card-body"><span class="cat">Python</span><h3>Python Basics That Multiply With AI</h3><p>A student-friendly guide to Python fundamentals that support AI learning.</p><div class="tags"><span>Python</span><span>AI</span><span>Beginners</span></div></div></a>
+          <a class="card" href="https://medium.com/@smlsmohan111/you-still-need-skills-how-ai-made-me-faster-and-where-it-didnt-82c5c5122bd7" target="_blank"><div class="card-img"><img src="assets/projects/fabric-cordis-platform.svg" alt="AI skills blog preview"></div><div class="card-body"><span class="cat">AI & Skills</span><h3>You Still Need Skills</h3><p>Where AI improves productivity and where human skill still matters.</p><div class="tags"><span>AI</span><span>Productivity</span><span>Skills</span></div></div></a>
+          <a class="card" href="https://medium.com/@smlsmohan111/from-beginner-to-confident-final-git-guide-on-branching-merging-and-real-world-workflow-b57a66acfa68" target="_blank"><div class="card-img"><img src="assets/projects/ml-aco-route-optimisation.svg" alt="Git workflow blog preview"></div><div class="card-body"><span class="cat">Git</span><h3>Final Git Guide</h3><p>Branching, merging and real-world workflow explained for beginners.</p><div class="tags"><span>Git</span><span>Workflow</span><span>DevOps</span></div></div></a>
+          <a class="card" href="https://medium.com/@smlsmohan111/your-first-git-project-3-key-steps-to-set-up-commit-and-push-to-github-be675acdc761" target="_blank"><div class="card-img"><img src="assets/blog/python-ai.svg" alt="First Git project blog preview"></div><div class="card-body"><span class="cat">GitHub</span><h3>Your First Git Project</h3><p>Three practical steps to set up, commit and push code to GitHub.</p><div class="tags"><span>Git</span><span>GitHub</span><span>Beginner</span></div></div></a>
+          <a class="card" href="https://medium.com/@smlsmohan111/3-easy-steps-to-start-with-github-81ed62f2b037" target="_blank"><div class="card-img"><img src="assets/blog/cloud-evolution.svg" alt="GitHub start blog preview"></div><div class="card-body"><span class="cat">GitHub</span><h3>3 Easy Steps to Start with GitHub</h3><p>A simple introduction to GitHub for version control and project sharing.</p><div class="tags"><span>GitHub</span><span>Beginner</span><span>Guide</span></div></div></a>
         </div>
+      </div>
     </section>
 
-    <section id="awards">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <div class="section-label">Recognition</div>
-                <h2 class="section-title">Awards & <span>Achievements</span></h2>
-                <p class="section-description">Recognized for excellence, innovation, and teamwork.</p>
-            </div>
-            <div class="awards-grid">
-                <div class="award-card fade-in"><div class="award-icon"><i class="fas fa-trophy"></i></div><h3>Best Employee of the Project</h3><div class="award-year">2024</div><p>Recognized for exceptional contributions to CareSource MDP Migration project delivery.</p></div>
-                <div class="award-card fade-in"><div class="award-icon"><i class="fas fa-star"></i></div><h3>Emerging Talent Award</h3><div class="award-year">2023</div><p>Honored for rapid skill development and significant impact as a rising professional.</p></div>
-                <div class="award-card fade-in"><div class="award-icon"><i class="fas fa-users"></i></div><h3>Working as One Award</h3><div class="award-year">2022</div><p>Celebrated for outstanding collaboration across cross-functional project teams.</p></div>
-            </div>
-        </div>
+    <section id="skills" class="about">
+      <div class="wrap"><div class="section-head"><div class="label">Certifications</div><h2>Learning & <span>Credentials</span></h2><p>Microsoft, Oracle and machine learning learning credentials.</p></div><div class="grid grid-3"><div class="role"><h3>Microsoft DP-700</h3><p>Fabric Data Engineer Associate</p></div><div class="role"><h3>Microsoft PL-300</h3><p>Power BI Data Analyst</p></div><div class="role"><h3>Machine Learning</h3><p>DeepLearning.AI and Stanford supervised machine learning course.</p></div></div></div>
     </section>
 
-    <section id="education">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <div class="section-label">Education</div>
-                <h2 class="section-title">Academic <span>Background</span></h2>
-                <p class="section-description">Building a strong foundation in technology and business.</p>
-            </div>
-            <div class="education-grid">
-                <div class="edu-card fade-in"><div class="edu-icon"><i class="fas fa-brain"></i></div><h3>MSc in AI for Business</h3><h4>National College of Ireland, Dublin</h4><p>Automated Leap Card student application process using UiPath (RPA) with rule-based validation, CSV audit reports, and email notifications. Completed MSc research on Hybrid Ant Colony Optimization for Last Mile Delivery using ANN, KNN, and LSTM with Python and ML frameworks.</p><span class="edu-date">Jan 2025 - Jan 2026</span></div>
-                <div class="edu-card fade-in"><div class="edu-icon"><i class="fas fa-microchip"></i></div><h3>B.Tech in Electronics & Communication Engineering</h3><h4>SRIN College, India</h4><p>Strong foundation in electronics, computer architecture, embedded systems, digital signal processing, and programming fundamentals.</p><span class="edu-date">Jun 2016 - Nov 2020</span></div>
-            </div>
-        </div>
+    <section id="contact" class="contact">
+      <div class="wrap"><div class="section-head"><div class="label">Contact</div><h2>Let's Work <span>Together</span></h2><p>Open to Azure Data Engineer, BI Developer and Power BI Analyst opportunities in Ireland.</p></div><div class="contact-grid"><a class="contact-card" href="mailto:smlsmohan111@gmail.com"><i class="fas fa-envelope"></i><h3>Email</h3><p>smlsmohan111@gmail.com</p></a><a class="contact-card" href="https://linkedin.com/in/smlsatyamohan" target="_blank"><i class="fab fa-linkedin-in"></i><h3>LinkedIn</h3><p>linkedin.com/in/smlsatyamohan</p></a><a class="contact-card" href="https://github.com/smlsmohan" target="_blank"><i class="fab fa-github"></i><h3>GitHub</h3><p>github.com/smlsmohan</p></a></div></div>
     </section>
+  </main>
 
-    <section id="contact">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <div class="section-label">Get In Touch</div>
-                <h2 class="section-title">Let's Work <span>Together</span></h2>
-                <p class="section-description">Open to Azure Data Engineer, Power BI Analyst, and BI Developer opportunities in Ireland.</p>
-            </div>
-            <div class="contact-wrapper">
-                <div class="contact-info fade-in">
-                    <h3>Contact <span>Information</span></h3>
-                    <p>I'm currently seeking full-time opportunities in Ireland with Stamp 1G Visa work authorization. Feel free to reach out!</p>
-                    <div class="contact-links">
-                        <a href="mailto:smlsmohan111@gmail.com" class="contact-link"><div class="contact-link-icon"><i class="fas fa-envelope"></i></div><div class="contact-link-content"><h4>Email</h4><p>smlsmohan111@gmail.com</p></div></a>
-                        <a href="tel:+3538965550306" class="contact-link"><div class="contact-link-icon"><i class="fas fa-phone"></i></div><div class="contact-link-content"><h4>Phone</h4><p>+353 8965550306</p></div></a>
-                        <a href="https://linkedin.com/in/smlsatyamohan" target="_blank" class="contact-link"><div class="contact-link-icon"><i class="fab fa-linkedin-in"></i></div><div class="contact-link-content"><h4>LinkedIn</h4><p>linkedin.com/in/smlsatyamohan</p></div></a>
-                        <a href="https://github.com/smlsmohan" target="_blank" class="contact-link"><div class="contact-link-icon"><i class="fab fa-github"></i></div><div class="contact-link-content"><h4>GitHub</h4><p>github.com/smlsmohan</p></div></a>
-                        <a href="https://medium.com/@smlsmohan111" target="_blank" class="contact-link"><div class="contact-link-icon"><i class="fab fa-medium"></i></div><div class="contact-link-content"><h4>Medium</h4><p>medium.com/@smlsmohan111</p></div></a>
-                        <div class="contact-link"><div class="contact-link-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-link-content"><h4>Location</h4><p>Dublin, Ireland • Stamp 1G Visa</p></div></div>
-                    </div>
-                </div>
-                <div class="contact-form-wrapper fade-in">
-                    <h3>Send a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-row"><div class="form-group"><label>Your Name</label><input type="text" name="name" placeholder="John Doe" required></div><div class="form-group"><label>Your Email</label><input type="email" name="email" placeholder="john@example.com" required></div></div>
-                        <div class="form-group"><label>Subject</label><input type="text" name="subject" placeholder="How can I help you?"></div>
-                        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about your project..." required></textarea></div>
-                        <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-logo">Mohan<span>.</span></div>
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/smlsatyamohan" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/smlsmohan" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://medium.com/@smlsmohan111" target="_blank"><i class="fab fa-medium"></i></a>
-                    <a href="mailto:smlsmohan111@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 Mohan Samanthakurthi. Built with passion in Dublin, Ireland.</p>
-                <div class="footer-links"><a href="#home">Home</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#blog">Blog</a><a href="#contact">Contact</a></div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        window.addEventListener('load', () => { setTimeout(() => { document.getElementById('loader').classList.add('hidden'); }, 500); });
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-links a');
-        window.addEventListener('scroll', () => { let current = ''; sections.forEach(s => { if (scrollY >= s.offsetTop - 200) current = s.getAttribute('id'); }); navLinks.forEach(l => { l.classList.toggle('active', l.getAttribute('href') === '#' + current); }); });
-        const mobileToggle = document.getElementById('mobileToggle');
-        const mobileNav = document.getElementById('mobileNav');
-        const mobileNavClose = document.getElementById('mobileNavClose');
-        mobileToggle.addEventListener('click', () => mobileNav.classList.add('active'));
-        mobileNavClose.addEventListener('click', () => mobileNav.classList.remove('active'));
-        mobileNav.querySelectorAll('a').forEach(l => l.addEventListener('click', () => mobileNav.classList.remove('active')));
-        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-        filterBtns.forEach(btn => { btn.addEventListener('click', () => { filterBtns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); const filter = btn.getAttribute('data-filter'); projectCards.forEach(card => { if (filter === 'all' || card.getAttribute('data-category') === filter) { card.style.display = 'block'; setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 10); } else { card.style.opacity = '0'; card.style.transform = 'translateY(20px)'; setTimeout(() => { card.style.display = 'none'; }, 300); } }); }); });
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
-        document.getElementById('contactForm').addEventListener('submit', (e) => { e.preventDefault(); const formData = new FormData(e.target); window.location.href = 'mailto:smlsmohan111@gmail.com?subject=' + encodeURIComponent(formData.get('subject') || 'Portfolio Contact') + '&body=' + encodeURIComponent('Name: ' + formData.get('name') + '\nEmail: ' + formData.get('email') + '\n\nMessage:\n' + formData.get('message')); });
-    </script>
+  <footer>© 2026 Mohan Samanthakurthi. Built as a data engineering and AI portfolio.</footer>
 </body>
 </html>
