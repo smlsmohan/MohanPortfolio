@@ -1,0 +1,126 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 2849 >>
+stream
+BT
+/F1 22 Tf
+72 750 Td
+(Student Leap Card RPA Automation - Project Report) Tj
+/F1 15 Tf
+72 712 Td
+(Overview) Tj
+/F1 10.3 Tf
+72 688 Td
+(This UiPath proof-of-concept automates validation of Student Leap Card applications. It) Tj
+/F1 10.3 Tf
+72 673 Td
+(processes applicant folders, reads applicant_data.csv files, applies business rules, writes) Tj
+/F1 10.3 Tf
+72 658 Td
+(CSV audit outputs and sends personalised email notifications.) Tj
+/F1 15 Tf
+72 635 Td
+(As-Is Process) Tj
+/F1 10.3 Tf
+72 611 Td
+(The manual process requires an officer to open each applicant folder, read the CSV file,) Tj
+/F1 10.3 Tf
+72 596 Td
+(calculate age, validate academic year, confirm payment, inspect selfie match quality, decide) Tj
+/F1 10.3 Tf
+72 581 Td
+(the outcome, update spreadsheets and send emails manually. The process is slow, error-prone,) Tj
+/F1 10.3 Tf
+72 566 Td
+(subjective and difficult to audit.) Tj
+/F1 15 Tf
+72 543 Td
+(To-Be Automation) Tj
+/F1 10.3 Tf
+72 519 Td
+(The UiPath bot prepares a clean output directory, loops through applicant subfolders, reads) Tj
+/F1 10.3 Tf
+72 504 Td
+(structured data, calculates age, validates business rules and writes the result to) Tj
+/F1 10.3 Tf
+72 489 Td
+(approved.csv, manual_review.csv or rejected.csv.) Tj
+/F1 15 Tf
+72 466 Td
+(Business Rules) Tj
+/F1 10.3 Tf
+72 442 Td
+(Age must be between 17 and 25. Academic year must match the expected year. Payment must be) Tj
+/F1 10.3 Tf
+72 427 Td
+(authorised. Selfie score below 0.70 is rejected, 0.70 to 0.85 is manual review, and 0.85 or) Tj
+/F1 10.3 Tf
+72 412 Td
+(above is approved if all other checks pass.) Tj
+/F1 15 Tf
+72 389 Td
+(Outputs) Tj
+/F1 10.3 Tf
+72 365 Td
+(The solution generates three output CSV files: approved.csv, manual_review.csv and) Tj
+/F1 10.3 Tf
+72 350 Td
+(rejected.csv. Each output contains application_id, full_name, status and reason. Email) Tj
+/F1 10.3 Tf
+72 335 Td
+(notifications are generated with the applicant name, application ID and decision outcome.) Tj
+/F1 15 Tf
+72 312 Td
+(Testing and Benefits) Tj
+/F1 10.3 Tf
+72 288 Td
+(Test cases covered approval, age rejection, academic year rejection, payment rejection, low) Tj
+/F1 10.3 Tf
+72 273 Td
+(selfie score rejection, manual review and multiple rejection scenarios. The bot produced the) Tj
+/F1 10.3 Tf
+72 258 Td
+(expected CSV outputs and notification emails. Benefits include faster processing, consistent) Tj
+/F1 10.3 Tf
+72 243 Td
+(rule application, improved auditability and reduced manual workload.) Tj
+/F1 15 Tf
+72 220 Td
+(Cost-Benefit Summary) Tj
+/F1 10.3 Tf
+72 196 Td
+(The report estimated 10,000 applications per year, 5 minutes of manual effort per) Tj
+/F1 10.3 Tf
+72 181 Td
+(application, 833.3 hours of manual processing and annual savings of approximately EUR) Tj
+/F1 10.3 Tf
+72 166 Td
+(13,674. With a EUR 1,000 development estimate, the first-year ROI was estimated at 1367%.) Tj
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000185 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3212
+%%EOF
